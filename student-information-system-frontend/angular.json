@@ -1,0 +1,140 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "student-information-system-frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/student-information-system-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
+              "node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+              "node_modules/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
+              "node_modules/admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css",
+              "node_modules/admin-lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css",
+              "node_modules/admin-lte/plugins/toastr/toastr.min.css",
+              "node_modules/admin-lte/dist/css/adminlte.min.css",
+              "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+              "node_modules/admin-lte/plugins/daterangepicker/daterangepicker.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/admin-lte/plugins/jquery/jquery.min.js",
+              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/admin-lte/plugins/chart.js/Chart.min.js",
+              "node_modules/admin-lte/plugins/moment/moment.min.js",
+              "node_modules/admin-lte/plugins/daterangepicker/daterangepicker.js",
+              "node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+              "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+              "node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js",
+              "node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
+              "node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js",
+              "node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js",
+              "node_modules/admin-lte/plugins/toastr/toastr.min.js",
+              "node_modules/admin-lte/dist/js/adminlte.min.js",
+              "node_modules/admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js",
+              "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js",
+              "node_modules/admin-lte/plugins/jszip/jszip.min.js",
+              "node_modules/admin-lte/plugins/pdfmake/pdfmake.min.js",
+              "node_modules/admin-lte/plugins/pdfmake/vfs_fonts.js",
+              "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js",
+              "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "student-information-system-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "student-information-system-frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "student-information-system-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "789cad5e-5771-4e6f-b589-2e38857c6b00"
+  }
+}
