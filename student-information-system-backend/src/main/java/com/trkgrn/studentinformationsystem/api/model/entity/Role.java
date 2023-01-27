@@ -1,0 +1,25 @@
+package com.trkgrn.studentinformationsystem.api.model.entity;
+
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(schema = "public", name = "role")
+public class Role {
+
+    @Id
+    @Column(name = "role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long roleId;
+
+    @Column(name = "name")
+    private String name;
+
+}
