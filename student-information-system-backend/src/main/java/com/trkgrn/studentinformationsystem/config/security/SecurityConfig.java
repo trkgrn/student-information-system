@@ -57,6 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(AUTH_WHITE_LIST)
                 .permitAll()
+                .antMatchers("/api/user/**")
+                .hasAnyAuthority("STUDENT","TEACHER")
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement()
