@@ -57,6 +57,13 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+        <!-- Flyway-Database Migrations -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>9.4.0</version>
+        </dependency>
+
         <!-- Swagger API -->
         <dependency>
             <groupId>io.springfox</groupId>
