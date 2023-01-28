@@ -8,6 +8,11 @@ import {RouterModule} from "@angular/router";
 import { HomeComponent } from './components/home/home.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthGuard} from "./components/auth/auth.guard";
+import {AuthService} from "./services/auth.service";
+import {HttpService} from "./services/http.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {JwtInterceptor} from "./Interceptors/JwtInterceptor";
+import {RoleService} from "./services/role.service";
 
 @NgModule({
   declarations: [
@@ -19,9 +24,10 @@ import {AuthGuard} from "./components/auth/auth.guard";
     imports: [
         BrowserModule,
         RouterModule,
-      AppRoutingModule
+      AppRoutingModule,
+      HttpClientModule
     ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,AuthService,HttpService,RoleService,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

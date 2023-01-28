@@ -8,9 +8,9 @@
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="../../index3.html" method="post">
+        <div [formGroup]="form">
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="TCK No">
+            <input type="email" class="form-control" placeholder="TCK No" formControlName="tckNo" [required]="true">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-id-card"></span>
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password" [required]="true">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -26,9 +26,9 @@
             </div>
           </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block" (click)="login()" [disabled]="form.invalid">Sign In</button>
             </div>
-        </form>
+        </div>
 
         <p class="mb-1">
           <a href="/auth/register" class="text-center">Register a new membership</a>
