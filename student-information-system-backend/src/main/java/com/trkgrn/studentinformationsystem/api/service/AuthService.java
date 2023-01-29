@@ -15,6 +15,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class AuthService {
 
@@ -28,18 +30,21 @@ public class AuthService {
 
     private final TokenService tokenService;
 
+    private final HttpServletRequest request;
+
 
 
     @Value("${jwt.login.expire.hours}")
     private Long expireHours;
 
-    public AuthService(JwtUtil jwtUtil, AuthenticationManager authenticationManager, UserDetailService userDetailsService, UserService userService, TokenService tokenService) {
+    public AuthService(JwtUtil jwtUtil, AuthenticationManager authenticationManager, UserDetailService userDetailsService, UserService userService, TokenService tokenService, HttpServletRequest request) {
         this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.userService = userService;
         this.tokenService = tokenService;
 
+        this.request = request;
     }
 
 
@@ -60,14 +65,21 @@ public class AuthService {
         return new AuthResponse(jwt, userDetails.getRole().getName(), userDetails.getUser().getUserId());
     }
 
-    public String register(User user) {
+    public User register(User user) {
+        User addedUser = null;
         try {
-            this.userService.add(user);
+          addedUser = this.userService.add(user);
         } catch (DataIntegrityViolationException ex) {
             throw new SQLExc("Sistemde bu bilgilere ait kayıt bulunmaktadır. Lütfen bilgilerinizi kontrol edin.");
         }
 
-        return "Kayıt başarılı";
+        return addedUser;
+    }
+
+    public void logout() {
+        String token = request.getHeader("Authorization").substring(7);
+        String tckNo = jwtUtil.extractUsername(token);
+        tokenService.delete(tckNo);
     }
 
 }

@@ -4,7 +4,7 @@ export class User {
   tckNo?: string;
   firstName?: string;
   lastName?: string;
-  eMail?: string;
+  email?: string;
   telNo?: string;
   address?: string;
   password?: string;

@@ -60,4 +60,8 @@ export class AuthService {
     return this.http.post("/auth/register", user);
   }
 
+  logout() {
+    return this.http.get("/auth/logout");
+  }
+
 }

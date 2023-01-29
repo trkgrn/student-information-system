@@ -33,7 +33,7 @@ public class User {
     private String telNo;
 
     @Column(name = "e_mail", unique = true)
-    private String eMail;
+    private String email;
 
     @Column(name = "address")
     private String address;
