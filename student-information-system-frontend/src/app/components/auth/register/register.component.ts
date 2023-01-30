@@ -21,11 +21,11 @@ export class RegisterComponent implements OnInit {
     this.form = formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-      tckNo: [null, Validators.required],
-      telNo: [null, Validators.required],
+      tckNo: [null, [Validators.required,Validators.pattern("^[1-9]{1}[0-9]{9}[02468]{1}$")]],
+      telNo: [null, [Validators.required, Validators.pattern("^[0-9]{10,10}$")]],
       address: [null, Validators.required],
-      email: [null, Validators.required],
-      password: [null, Validators.required],
+      email: [null, [Validators.required,Validators.pattern("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]],
+      password: [null, [Validators.required,Validators.minLength(5)]],
       role: [null, Validators.required]
     });
   }
@@ -35,14 +35,14 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    let user: User = this.form.value;
-    user.role = this.roles.find(role => role.roleId == user.role);
-    await this.authService.register(user)
-      .then((resp:any) => {
-        this.router.navigateByUrl('/auth/login');
-      }).catch((err:any) => {
-        console.log(err);
-      });
+      let user: User = this.form.value;
+      user.role = this.roles.find(role => role.roleId == user.role);
+      await this.authService.register(user)
+        .then((resp:any) => {
+          this.router.navigateByUrl('/auth/login');
+        }).catch((err:any) => {
+          console.log(err);
+        });
   }
 
 }
