@@ -4,13 +4,11 @@ import com.trkgrn.studentinformationsystem.api.model.dto.UserDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -24,19 +22,55 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<User> add(User user){
-        User addedUser = userService.add(user);
-        return ResponseEntity.ok(addedUser);
+    @PostMapping
+    public ResponseEntity<?> saveUser(User user){
+        try {
+            User savedUser = userService.saveUser(user);
+            return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> list(){
-        return ResponseEntity.ok(userService.list());
+    public ResponseEntity<?> getAllUser(){
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(Long id){
+        Optional<User> userFromDb = Optional.ofNullable(userService.getUserById(id));
+        if (userFromDb.isPresent()) {
+            return new ResponseEntity<>(modelMapper.map(userFromDb, UserDto.class), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(User user, Long id){
+        Optional<User> updatedUser = Optional.ofNullable(userService.updateUser(user, id));
+        if (updatedUser.isPresent()) {
+            return new ResponseEntity<>(modelMapper.map(updatedUser, UserDto.class), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUserById(Long id){
+        try {
+            userService.deleteUserById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/findByJwt")
-    public ResponseEntity<UserDto> findByJwt(){
-        return ResponseEntity.ok(modelMapper.map(userService.findByJwt(), UserDto.class));
+    public ResponseEntity<?> findByJwt(){
+            Optional<User> userFromDb = Optional.ofNullable(userService.findByJwt());
+            if (userFromDb.isPresent()) {
+                return new ResponseEntity<>(modelMapper.map(userFromDb, UserDto.class), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
