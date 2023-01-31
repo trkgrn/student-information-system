@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -28,14 +29,39 @@ public class UserService {
         this.request = request;
     }
 
-    public User add(User user) {
+    public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User addedUser = this.userRepository.save(user);
-        return addedUser;
+        return this.userRepository.save(user);
     }
 
-    public List<User> list(){
+    public List<User> getAllUsers(){
         return this.userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return this.userRepository.findById(id).orElse(null);
+    }
+
+    public User updateUser(User user, Long id){
+        Optional<User> userOptional = this.userRepository.findById(id);
+        if (userOptional.isPresent()){
+            User updatedUser = userOptional.get();
+            updatedUser.setUserId(id);
+            updatedUser.setTckNo(user.getTckNo());
+            updatedUser.setFirstName(user.getFirstName());
+            updatedUser.setLastName(user.getLastName());
+            updatedUser.setAddress(user.getAddress());
+            updatedUser.setTelNo(user.getTelNo());
+            updatedUser.setEmail(user.getEmail());
+            updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            updatedUser.setRole(user.getRole());
+            return this.userRepository.save(updatedUser);
+        }
+        return null;
+    }
+
+    public void deleteUserById(Long id) {
+        this.userRepository.deleteById(id);
     }
 
     public User findByTCKNo(String tckNo) {

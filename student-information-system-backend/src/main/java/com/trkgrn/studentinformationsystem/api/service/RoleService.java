@@ -5,6 +5,7 @@ import com.trkgrn.studentinformationsystem.api.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleService {
@@ -15,7 +16,31 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public List<Role> findAll() {
+    public Iterable<Role> getAllRoles() {
         return roleRepository.findAll();
     }
+
+    public Role saveRole(Role role) {
+        return roleRepository.save(role);
+    }
+
+    public Role getRoleById(Long id) {
+        return roleRepository.findById(id).orElse(null);
+    }
+
+    public void deleteRoleById(Long id) {
+        roleRepository.deleteById(id);
+    }
+
+    public Role updateRole(Role role, Long id) {
+        Optional<Role> roleOptional = roleRepository.findById(id);
+        if (roleOptional.isPresent()) {
+            Role updatedRole = roleOptional.get();
+            updatedRole.setRoleId(id);
+            updatedRole.setName(role.getName());
+            return roleRepository.save(updatedRole);
+        }
+        return null;
+    }
+
 }

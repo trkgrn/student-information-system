@@ -68,7 +68,7 @@ public class AuthService {
     public User register(User user) {
         User addedUser = null;
         try {
-          addedUser = this.userService.add(user);
+          addedUser = this.userService.saveUser(user);
         } catch (DataIntegrityViolationException ex) {
             throw new SQLExc("Sistemde bu bilgilere ait kayıt bulunmaktadır. Lütfen bilgilerinizi kontrol edin.");
         }
