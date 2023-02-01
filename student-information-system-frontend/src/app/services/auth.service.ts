@@ -64,4 +64,8 @@ export class AuthService {
     return this.http.get("/auth/logout");
   }
 
+  getAuthenticatedUser() {
+    return this.http.get("/user/findByJwt");
+  }
+
 }

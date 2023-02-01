@@ -6,7 +6,24 @@
 
   <div *ngIf="authService.isSignedIn()">
     <app-navbar></app-navbar>
-    <app-sidebar></app-sidebar>
+
+    <div *ngIf="authService.getRole() === 'STUDENT'">
+      <aside class="main-sidebar sidebar-light-indigo elevation-5">
+        <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+    <div *ngIf="authService.getRole() === 'TEACHER'">
+      <aside class="main-sidebar sidebar-light-red elevation-5">
+        <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+    <div *ngIf="authService.getRole() === 'ADMIN'">
+      <aside class="main-sidebar sidebar-dark-red elevation-5">
+        <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+
+
 
 
     <div class="content-wrapper">
