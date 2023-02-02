@@ -14,6 +14,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptor} from "./Interceptors/JwtInterceptor";
 import {RoleService} from "./services/role.service";
 import {FacultyService} from "./services/faculty.service";
+import {ModalModule} from "./modules/modal/modal.module";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,11 @@ import {FacultyService} from "./services/faculty.service";
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule,
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule
+
   ],
   providers: [AuthGuard, AuthService, HttpService, RoleService, FacultyService, {
     provide: HTTP_INTERCEPTORS,
