@@ -1,0 +1,43 @@
+<div class="modal-content">
+
+  <div class="modal-header">
+    <h3>{{method}}</h3>
+  </div><!-- /.modal-header -->
+
+  <div class="modal-body">
+
+    <label>Name</label>
+    <div [formGroup]="form">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Name" formControlName="name"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-signature"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Faculty</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="faculty" [required]="true">
+          <option [ngValue]="faculty" *ngFor="let faculty of faculties">{{faculty.name}}</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-building"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.modal-body -->
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-outline-success mr-2" (click)="save()" [disabled]="form.invalid">Save
+      </button>
+      <button type="submit" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </div><!-- /.modal-footer -->
+
+</div> <!-- /.modal-content -->
+

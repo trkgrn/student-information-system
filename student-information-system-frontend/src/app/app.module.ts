@@ -17,6 +17,8 @@ import {FacultyService} from "./services/faculty.service";
 import {ModalModule} from "./modules/modal/modal.module";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {ReactiveFormsModule} from "@angular/forms";
+import {BranchService} from "./services/branch.service";
+import {ClassService} from "./services/class.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
 
   ],
-  providers: [AuthGuard, AuthService, HttpService, RoleService, FacultyService, {
+  providers: [AuthGuard, AuthService, HttpService, RoleService, FacultyService,BranchService,ClassService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptor,
     multi: true

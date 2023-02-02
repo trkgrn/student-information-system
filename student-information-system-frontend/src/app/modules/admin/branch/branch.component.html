@@ -1,1 +1,57 @@
-<p>branch works!</p>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Branch Manage</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+          <li class="breadcrumb-item active">Branch Manage</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section><!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <button type="button" class="btn btn-success btn-lg" (click)="newBranch()"><i class="fa fa-plus"></i> New</button>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="tbl_branch" class="table table-hover">
+              <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Faculty</th>
+                <th class="th-btn"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let branch of branches">
+                <td>{{branch.branchId}}</td>
+                <td>{{branch.name}}</td>
+                <td>{{branch.faculty?.name}}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-circle" (click)="updateBranch(branch)"><i class="fa fa-pen"></i></button>
+                  <button type="button" class="btn btn-danger btn-circle"
+                          (click)="deleteSwAlert(branch)"><i class="fa fa-trash"></i></button>
+                </td>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div> <!-- /.container-fluid -->
+</section> <!-- /.content -->
