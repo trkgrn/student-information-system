@@ -20,16 +20,16 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <button type="button" class="btn btn-success btn-lg" (click)="newFaculty()"><i class="fa fa-plus"></i> New</button>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-              <thead>
+            <table id="tbl_faculty" class="table table-hover">
+              <thead class="thead-light">
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th></th>
+                <th class="th-btn"></th>
               </tr>
               </thead>
               <tbody>
@@ -37,11 +37,9 @@
                 <td>{{faculty.facultyId}}</td>
                 <td>{{faculty.name}}</td>
                 <td>
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary">Left</button>
-                    <button type="button" class="btn btn-primary">Middle</button>
-                    <button type="button" class="btn btn-primary">Right</button>
-                  </div>
+                  <button type="button" class="btn btn-warning btn-circle" (click)="updateFaculty(faculty)"><i class="fa fa-pen"></i></button>
+                  <button type="button" class="btn btn-danger btn-circle"
+                          (click)="deleteSwAlert(faculty)"><i class="fa fa-trash"></i></button>
                 </td>
               </tbody>
             </table>
@@ -55,4 +53,6 @@
     <!-- /.row -->
     </div> <!-- /.container-fluid -->
   </section> <!-- /.content -->
+
+
 
