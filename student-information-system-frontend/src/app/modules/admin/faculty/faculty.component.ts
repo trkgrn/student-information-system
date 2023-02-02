@@ -46,6 +46,7 @@ export class FacultyComponent implements OnInit {
     });
 
     modal.afterClose = (data) => {
+      if (data.choose)
       this.facultyService.create(data.data)
         .then(async (value: any) => {
           this.faculties = await this.facultyService.getAll();
@@ -66,10 +67,11 @@ export class FacultyComponent implements OnInit {
     });
 
     modal.afterClose = (data) => {
-      this.facultyService.update(data.data, data.data.facultyId)
-        .then(async (value: any) => {
-          this.faculties = await this.facultyService.getAll();
-        });
+      if (data.choose)
+        this.facultyService.update(data.data, data.data.facultyId)
+          .then(async (value: any) => {
+            this.faculties = await this.facultyService.getAll();
+          });
     }
   }
 

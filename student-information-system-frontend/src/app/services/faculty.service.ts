@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpService} from "./http.service";
 
 @Injectable({
@@ -6,27 +6,29 @@ import {HttpService} from "./http.service";
 })
 export class FacultyService {
 
-  constructor(private http:HttpService) { }
+  path: string = '/faculty';
 
-  getAll(){
-    return this.http.get('/faculty/all');
+  constructor(private http: HttpService) {
   }
 
-  getById(id:number){
-    return this.http.get('/faculty/'+id);
+  getAll() {
+    return this.http.get(this.path + '/all');
   }
 
-  create(faculty:any){
-    return this.http.post('/faculty',faculty);
+  getById(id: number) {
+    return this.http.get(this.path + '/' + id);
   }
 
-  update(faculty:any, id:number){
-    return this.http.put('/faculty/'+id,faculty);
+  create(faculty: any) {
+    return this.http.post(this.path, faculty);
   }
 
-  delete(id:number){
-    return this.http.delete('/faculty/'+id);
+  update(faculty: any, id: number) {
+    return this.http.put(this.path + '/' + id, faculty);
   }
 
+  delete(id: number) {
+    return this.http.delete(this.path + '/' + id);
+  }
 
 }
