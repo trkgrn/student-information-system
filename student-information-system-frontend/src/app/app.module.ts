@@ -21,6 +21,8 @@ import {BranchService} from "./services/branch.service";
 import {ClassService} from "./services/class.service";
 import {TeacherService} from "./services/teacher.service";
 import {StudentService} from "./services/student.service";
+import {LessonService} from "./services/lesson.service";
+import {LiveLessonService} from "./services/live-lesson.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import {StudentService} from "./services/student.service";
 
   ],
   providers: [AuthGuard, AuthService, HttpService, RoleService, FacultyService, BranchService, ClassService,
-    TeacherService, StudentService,
+    TeacherService, StudentService, LessonService, LiveLessonService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

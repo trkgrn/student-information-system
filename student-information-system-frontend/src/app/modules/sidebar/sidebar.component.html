@@ -105,13 +105,30 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a routerLink="/admin/lesson" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
-                  <i class="nav-icon fas fa-book"></i>
+              <li class="nav-item ">
+                <a href="#" class="nav-link" id="lesson">
+                  <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Lesson
+                    <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/lesson" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lesson</p>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/live-lesson" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson')">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Live Lesson</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
 

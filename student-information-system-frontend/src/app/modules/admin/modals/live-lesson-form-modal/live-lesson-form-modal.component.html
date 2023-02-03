@@ -1,0 +1,101 @@
+<div class="modal-content">
+
+  <div class="modal-header">
+    <h3>{{method}}</h3>
+  </div><!-- /.modal-header -->
+
+  <div class="modal-body">
+
+    <div [formGroup]="form">
+
+      <label>Class</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="_class" [required]="true">
+          <option [ngValue]="class" *ngFor="let class of classes">{{class.gradeYear + " - " + class.branch?.name}}</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-th"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Teacher</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="teacher" [required]="true">
+          <option [ngValue]="teacher" *ngFor="let teacher of teachers">{{teacher.user?.firstName + " " + teacher.user?.lastName}}</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-user"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Education Season</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="educationSeason" [required]="true">
+          <option [ngValue]="educationSeason" *ngFor="let educationSeason of educationSeasons">{{educationSeason.name}}</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-calendar-week"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Lesson</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="lesson" [required]="true">
+          <option [ngValue]="lesson" *ngFor="let lesson of lessons">{{lesson.name}}</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-book-open"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Midterm & Final Percent</label>
+      <div class="input-group mb-3">
+        <a>{{this.form.get('midtermPercent')?.value}}%</a>
+        <input (change)="rangeChange($event)" type="range" class="form-control form-range" min="0" max="100" step="5">
+        <a>{{this.form.get('finalPercent')?.value}}%</a>
+      </div>
+
+      <label>Period</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="isFirstPeriod" [required]="true">
+          <option [ngValue]="isFirstPeriods[0]">FIRST</option>
+          <option [ngValue]="isFirstPeriods[1]">SECOND</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-dice-two"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Is Active</label>
+      <div class="input-group mb-3">
+        <select class="form-control" formControlName="isActive" [required]="true">
+          <option [ngValue]="isActives[0]">YES</option>
+          <option [ngValue]="isActives[1]">NO</option>
+        </select>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-accessible-icon"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /.modal-body -->
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-outline-success mr-2" (click)="save()" [disabled]="form.invalid">Save</button>
+      <button type="submit" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </div><!-- /.modal-footer -->
+
+</div> <!-- /.modal-content -->

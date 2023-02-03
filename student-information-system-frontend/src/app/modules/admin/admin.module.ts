@@ -11,6 +11,8 @@ import { BranchFormModalComponent } from './modals/branch-form-modal/branch-form
 import { ClassFormModalComponent } from './modals/class-form-modal/class-form-modal.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { LessonFormModalComponent } from './modals/lesson-form-modal/lesson-form-modal.component';
+import { LiveLessonComponent } from './live-lesson/live-lesson.component';
+import { LiveLessonFormModalComponent } from './modals/live-lesson-form-modal/live-lesson-form-modal.component';
 
 
 
@@ -23,7 +25,9 @@ import { LessonFormModalComponent } from './modals/lesson-form-modal/lesson-form
     BranchFormModalComponent,
     ClassFormModalComponent,
     LessonComponent,
-    LessonFormModalComponent
+    LessonFormModalComponent,
+    LiveLessonComponent,
+    LiveLessonFormModalComponent
   ],
   imports: [
     CommonModule,

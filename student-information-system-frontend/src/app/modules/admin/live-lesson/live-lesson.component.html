@@ -1,0 +1,72 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Live-Lesson Manage</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+          <li class="breadcrumb-item active">Live-Lesson Manage</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section><!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <button type="button" class="btn btn-success btn-lg" (click)="newLiveLesson()"><i class="fa fa-plus"></i>
+              New
+            </button>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="tbl_live_lesson" class="table table-hover">
+              <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>Class</th>
+                <th>Lesson</th>
+                <th>Education Season</th>
+                <th>Teacher</th>
+                <th>Midterm Percent</th>
+                <th>Final Percent</th>
+                <th>Period</th>
+                <th>Is Active</th>
+                <th class="th-btn"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let liveLesson of liveLessons">
+                <td>{{liveLesson.liveLessonId}}</td>
+                <td>{{liveLesson._class?.gradeYear + " - " + liveLesson._class?.branch?.name}}</td>
+                <td>{{liveLesson.lesson?.name}}</td>
+                <td>{{liveLesson.educationSeason?.name}}</td>
+                <td>{{liveLesson.teacher?.user?.firstName + " " + liveLesson.teacher?.user?.lastName}}</td>
+                <td>{{liveLesson.midtermPercent}}</td>
+                <td>{{liveLesson.finalPercent}}</td>
+                <td>{{liveLesson.isFirstPeriod}}</td>
+                <td>{{liveLesson.isActive}}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-circle" (click)="updateLiveLesson(liveLesson)"><i
+                    class="fa fa-pen"></i></button>
+                  <button type="button" class="btn btn-danger btn-circle"
+                          (click)="deleteSwAlert(liveLesson)"><i class="fa fa-trash"></i></button>
+                </td>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div> <!-- /.container-fluid -->
+</section> <!-- /.content -->
