@@ -55,9 +55,8 @@ public class AuthInterceptor implements HandlerInterceptor {
             } catch (ExpiredJwtException e) {
                 throw new ExpiredJwtExc("Oturun süresi sona erdi.");
             }
-            System.out.println("Hi");
             if (jwt.equals(tokenObj.getJwt())) { // request headerından gelen token rediste bulunuyor mu?
-                System.out.println("kalansüre: "+jwtUtil.tokenExpiredHours(jwt)+" expr:"+expireHours);
+               // System.out.println("kalansüre: "+jwtUtil.tokenExpiredHours(jwt)+" expr:"+expireHours);
                 if(jwtUtil.tokenExpiredHours(jwt) < 6L){ // token'ın kalan süresi 6 saatten az ise
                     //Refresh Token
                     final CustomUserDetails userDetails = userDetailsService.loadUserByUsername(tckNo);

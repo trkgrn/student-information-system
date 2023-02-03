@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider provider= new DaoAuthenticationProvider();
+    AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder());
         return provider;
@@ -54,12 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/auth/**","/api/role/**")
-                .permitAll()
                 .antMatchers(AUTH_WHITE_LIST)
                 .permitAll()
                 .antMatchers("/api/user/**")
-                .hasAnyAuthority("STUDENT","TEACHER")
+                .hasAnyAuthority("STUDENT", "TEACHER","ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement()
@@ -75,8 +73,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-resources/**",
             "/swagger-ui.html/**",
             "/webjars/**",
-            "/csrf/**"
-    };
+            "/csrf/**",
+            "/api/auth/**",
+            "/api/role/**",
+            "/api/faculty/**",
+            "/api/branch/**",
+            "/api/class/**",
+            "/api/teacher/**",
+            "/api/student/**",
+            "/api/lesson/**",
+            "/api/live-lesson/**",
+            "/api/note/**",
+            "/api/letter-grade/**",
+            "/api/education-season/**" };
 
 
 }

@@ -4,6 +4,8 @@ import com.trkgrn.studentinformationsystem.api.model.entity.Student;
 import com.trkgrn.studentinformationsystem.api.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class StudentService {
 
@@ -15,6 +17,7 @@ public class StudentService {
     }
 
     public Student saveStudent(Student student) {
+        student.setStudentNo(UUID.randomUUID().toString().substring(0, 9));
         return studentRepository.save(student);
     }
 
