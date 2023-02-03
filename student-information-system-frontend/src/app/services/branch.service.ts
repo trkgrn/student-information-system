@@ -18,12 +18,12 @@ export class BranchService {
     return this.http.get(this.path + '/' + id);
   }
 
-  create(faculty: any) {
-    return this.http.post(this.path, faculty);
+  create(branch: any) {
+    return this.http.post(this.path, branch);
   }
 
-  update(faculty: any, id: number) {
-    return this.http.put(this.path + '/' + id, faculty);
+  update(branch: any, id: number) {
+    return this.http.put(this.path + '/' + id, branch);
   }
 
   delete(id: number) {

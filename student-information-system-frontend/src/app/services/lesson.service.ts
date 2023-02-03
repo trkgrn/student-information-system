@@ -4,9 +4,9 @@ import {HttpService} from "./http.service";
 @Injectable({
   providedIn: 'root'
 })
-export class ClassService {
+export class LessonService {
 
-  path: string = '/class';
+  path: string = '/lesson';
 
   constructor(private http: HttpService) {
   }
@@ -19,12 +19,12 @@ export class ClassService {
     return this.http.get(this.path + '/' + id);
   }
 
-  create(newClass: any) {
-    return this.http.post(this.path, newClass);
+  create(lesson: any) {
+    return this.http.post(this.path, lesson);
   }
 
-  update(updClass: any, id: number) {
-    return this.http.put(this.path + '/' + id, updClass);
+  update(lesson: any, id: number) {
+    return this.http.put(this.path + '/' + id, lesson);
   }
 
   delete(id: number) {
