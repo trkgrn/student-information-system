@@ -9,6 +9,8 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {ReactiveFormsModule} from "@angular/forms";
 import { BranchFormModalComponent } from './modals/branch-form-modal/branch-form-modal.component';
 import { ClassFormModalComponent } from './modals/class-form-modal/class-form-modal.component';
+import { LessonComponent } from './lesson/lesson.component';
+import { LessonFormModalComponent } from './modals/lesson-form-modal/lesson-form-modal.component';
 
 
 
@@ -19,7 +21,9 @@ import { ClassFormModalComponent } from './modals/class-form-modal/class-form-mo
     ClassComponent,
     FacultyFormModalComponent,
     BranchFormModalComponent,
-    ClassFormModalComponent
+    ClassFormModalComponent,
+    LessonComponent,
+    LessonFormModalComponent
   ],
   imports: [
     CommonModule,

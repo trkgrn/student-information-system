@@ -33,7 +33,8 @@ export class ClassFormModalComponent implements OnModalInit {
     this.branches = await this.branchService.getAll();
 
     if (this.class) {
-      this.form.patchValue(this.class);
+      const selectedBranch = this.branches.find(b => b.name === this.class.branch?.name)
+      this.form.patchValue({...this.class, branch: selectedBranch})
     }
   }
 

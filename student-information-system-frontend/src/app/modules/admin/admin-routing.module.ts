@@ -4,13 +4,15 @@ import {HomeComponent} from "../home/home.component";
 import {FacultyComponent} from "./faculty/faculty.component";
 import {BranchComponent} from "./branch/branch.component";
 import {ClassComponent} from "./class/class.component";
+import {LessonComponent} from "./lesson/lesson.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path:'home',component:HomeComponent},
   {path: 'faculty', component: FacultyComponent},
   {path: 'branch', component: BranchComponent},
-  {path: 'class', component: ClassComponent}
+  {path: 'class', component: ClassComponent},
+  {path: 'lesson',component: LessonComponent}
 ];
 
 @NgModule({

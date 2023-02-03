@@ -33,7 +33,8 @@ export class BranchFormModalComponent implements OnModalInit {
     this.faculties = await this.facultyService.getAll();
 
     if (this.branch) {
-      this.form.patchValue(this.branch);
+      const selectedFaculty = this.faculties.find(f => f.name === this.branch.faculty?.name)
+      this.form.patchValue({...this.branch, faculty: selectedFaculty})
     }
   }
 
