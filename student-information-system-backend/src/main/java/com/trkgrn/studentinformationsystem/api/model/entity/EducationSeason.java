@@ -20,6 +20,6 @@ public class EducationSeason {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long educationSeasonId;
 
-    @Column(name = "name")
+    @Column(name = "name",unique = true)
     private String name;
 }
