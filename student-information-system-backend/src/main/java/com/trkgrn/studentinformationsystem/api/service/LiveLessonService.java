@@ -36,7 +36,7 @@ public class LiveLessonService {
             updatedLiveLesson.setTeacher(liveLesson.getTeacher());
             updatedLiveLesson.set_class(liveLesson.get_class());
             updatedLiveLesson.setEducationSeason(liveLesson.getEducationSeason());
-            updatedLiveLesson.setIsFirstPeriod(liveLesson.getIsFirstPeriod());
+            updatedLiveLesson.setPeriod(liveLesson.getPeriod());
             updatedLiveLesson.setMidtermPercent(liveLesson.getMidtermPercent());
             updatedLiveLesson.setFinalPercent(liveLesson.getFinalPercent());
             updatedLiveLesson.setIsActive(liveLesson.getIsActive());

@@ -1,17 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Faculty} from "../../../models/entity/Faculty";
-import {FacultyService} from "../../../services/faculty.service";
 import {ModalService} from "../../modal/modal.service";
-import {FacultyFormModalComponent} from "../modals/faculty-form-modal/faculty-form-modal.component";
 import Swal from "sweetalert2";
-import {Class} from "../../../models/entity/Class";
-import {Teacher} from "../../../models/entity/Teacher";
-import {EducationSeason} from "../../../models/entity/EducationSeason";
-import {Lesson} from "../../../models/entity/Lesson";
-import {ClassService} from "../../../services/class.service";
-import {TeacherService} from "../../../services/teacher.service";
-import {EducationSeasonService} from "../../../services/education-season.service";
-import {LessonService} from "../../../services/lesson.service";
 import {LiveLessonService} from "../../../services/live-lesson.service";
 import {LiveLesson} from "../../../models/entity/LiveLesson";
 import {LiveLessonFormModalComponent} from "../modals/live-lesson-form-modal/live-lesson-form-modal.component";

@@ -20,9 +20,6 @@ public class LiveLesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long liveLessonId;
 
-    @Column(name = "is_first_period")
-    private Boolean isFirstPeriod;
-
     @Column(name = "midterm_percent")
     private Integer midtermPercent;
 
@@ -31,6 +28,10 @@ public class LiveLesson {
 
     @Column(name = "is_active")
     private Boolean isActive;
+
+    @OneToOne
+    @JoinColumn(name = "period_id", referencedColumnName = "period_id")
+    private Period period;
 
     @OneToOne
     @JoinColumn(name = "education_season_id", referencedColumnName = "education_season_id")

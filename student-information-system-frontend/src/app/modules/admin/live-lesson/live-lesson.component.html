@@ -50,7 +50,7 @@
                 <td>{{liveLesson.teacher?.user?.firstName + " " + liveLesson.teacher?.user?.lastName}}</td>
                 <td>{{liveLesson.midtermPercent}}</td>
                 <td>{{liveLesson.finalPercent}}</td>
-                <td>{{liveLesson.isFirstPeriod}}</td>
+                <td>{{liveLesson.period?.name}}</td>
                 <td>{{liveLesson.isActive}}</td>
                 <td>
                   <button type="button" class="btn btn-warning btn-circle" (click)="updateLiveLesson(liveLesson)"><i

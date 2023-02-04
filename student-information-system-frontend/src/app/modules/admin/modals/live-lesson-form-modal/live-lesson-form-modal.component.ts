@@ -12,6 +12,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalService} from "../../../modal/modal.service";
 import {Branch} from "../../../../models/entity/Branch";
 import {OnModalInit} from "../../../modal/abstracts/on-modal-init";
+import {Period} from "../../../../models/entity/Period";
+import {PeriodService} from "../../../../services/period.service";
 
 @Component({
   selector: 'app-live-lesson-form-modal',
@@ -28,12 +30,12 @@ export class LiveLessonFormModalComponent implements OnModalInit {
   teachers: Teacher[] = [];
   educationSeasons: EducationSeason[] = [];
   lessons: Lesson[] = [];
-  isFirstPeriods: boolean[] = [true, false];
+  periods: Period[] = [];
   isActives: boolean[] = [true, false];
 
   constructor(private classService: ClassService, private teacherService: TeacherService, private lessonService: LessonService,
-              private educationSeasonService: EducationSeasonService, private formBuilder: FormBuilder,
-              private modalService: ModalService) {
+              private educationSeasonService: EducationSeasonService, private periodService: PeriodService,
+              private formBuilder: FormBuilder, private modalService: ModalService) {
     this.form = formBuilder.group({
       _class: [new Class(), Validators.required],
       teacher: [new Teacher(), Validators.required],
@@ -42,7 +44,7 @@ export class LiveLessonFormModalComponent implements OnModalInit {
       midtermPercent: [50, Validators.required],
       finalPercent: [50, Validators.required],
       isActive: [true, Validators.required],
-      isFirstPeriod: [true, Validators.required]
+      period: [new Period(), Validators.required]
     });
   }
 
@@ -52,13 +54,14 @@ export class LiveLessonFormModalComponent implements OnModalInit {
     this.teachers = await this.teacherService.getAll();
     this.educationSeasons = await this.educationSeasonService.getAll();
     this.lessons = await this.lessonService.getAll();
+    this.periods = await this.periodService.getAll();
 
     if (this.liveLesson) {
       const selectedClass = this.classes.find(c => c.classId === this.liveLesson._class?.classId);
       const selectedTeacher = this.teachers.find(t => t.teacherId === this.liveLesson.teacher?.teacherId);
       const selectedEducationSeason = this.educationSeasons.find(e => e.educationSeasonId === this.liveLesson.educationSeason?.educationSeasonId);
       const selectedLesson = this.lessons.find(l => l.lessonId === this.liveLesson.lesson?.lessonId);
-      const selectedIsFirstPeriod = this.isFirstPeriods.find(i => i === this.liveLesson.isFirstPeriod);
+      const selectedPeriod = this.periods.find(p => p.periodId === this.liveLesson.period?.periodId);
       const selectedIsActive = this.isActives.find(i => i === this.liveLesson.isActive);
 
       this.form.patchValue({
@@ -67,21 +70,19 @@ export class LiveLessonFormModalComponent implements OnModalInit {
         teacher: selectedTeacher,
         educationSeason: selectedEducationSeason,
         lesson: selectedLesson,
-        isFirstPeriod: selectedIsFirstPeriod,
+        period: selectedPeriod,
         isActive: selectedIsActive
       });
     }
   }
 
   rangeChange(event: any) {
-    const value = event.target.value as number;
-    console.log(value);
+    const value: number = Number(event.target.value);
     this.form.patchValue({
       midtermPercent: value,
-      finalPercent: 100 - value
+      finalPercent: 100- value
     });
-    this.liveLesson = this.form.value;
-    console.log(this.liveLesson)
+    console.log(this.form.value)
   }
 
   closeModal(choose: boolean) {

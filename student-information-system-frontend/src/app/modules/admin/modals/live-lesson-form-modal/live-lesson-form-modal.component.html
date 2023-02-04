@@ -65,13 +65,12 @@
 
       <label>Period</label>
       <div class="input-group mb-3">
-        <select class="form-control" formControlName="isFirstPeriod" [required]="true">
-          <option [ngValue]="isFirstPeriods[0]">FIRST</option>
-          <option [ngValue]="isFirstPeriods[1]">SECOND</option>
+        <select class="form-control" formControlName="period" [required]="true">
+          <option [ngValue]="period" *ngFor="let period of periods">{{period.name}}</option>
         </select>
         <div class="input-group-append">
           <div class="input-group-text">
-            <span class="fas fa-dice-two"></span>
+            <span class="fas fa-slash"></span>
           </div>
         </div>
       </div>
