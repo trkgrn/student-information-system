@@ -24,13 +24,17 @@ import {StudentService} from "./services/student.service";
 import {LessonService} from "./services/lesson.service";
 import {LiveLessonService} from "./services/live-lesson.service";
 import {PeriodService} from "./services/period.service";
+import { ProfileComponent } from './modules/profile/profile.component';
+import { UserUpdateFormModalComponent } from './modules/profile/user-update-form-modal/user-update-form-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    UserUpdateFormModalComponent
   ],
   imports: [
     BrowserModule,

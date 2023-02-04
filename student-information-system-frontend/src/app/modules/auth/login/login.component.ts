@@ -34,27 +34,12 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', resp.role as string);
         }
 
-        this.navigateByRole();
+        this.router.navigateByUrl('/profile');
 
       }).catch((err: any) => {
         alert(err);
       });
 
   }
-
-  navigateByRole() {
-    switch (this.authService.getRole()) {
-      case 'ADMIN':
-        this.router.navigateByUrl('/admin');
-        break;
-      case 'STUDENT':
-        this.router.navigateByUrl('/home');
-        break;
-      case 'TEACHER':
-        this.router.navigateByUrl('/home');
-        break;
-    }
-  }
-
 
 }

@@ -1,0 +1,73 @@
+<div class="modal-content">
+
+  <div class="modal-header">
+    <h3>{{method}}</h3>
+  </div><!-- /.modal-header -->
+
+  <div class="modal-body">
+
+    <div [formGroup]="form">
+      <label>First Name</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-signature"></span>
+          </div>
+        </div>
+      </div>
+      <label>Last Name</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-signature"></span>
+          </div>
+        </div>
+      </div>
+      <label>E-mail</label>
+      <div class="input-group mb-3">
+        <input type="email" class="form-control" placeholder="E-mail" formControlName="email"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-envelope"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Telephone Number</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Telephone Number" formControlName="telNo"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-phone"></span>
+          </div>
+        </div>
+      </div>
+      <label>Address</label>
+      <div class="input-group mb-3">
+      <textarea class="form-control" placeholder="Address" formControlName="address"
+                [required]="true"></textarea>
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-map"></span>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.form -->
+  </div> <!-- /.modal-body -->
+
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-outline-success mr-2" (click)="save()" [disabled]="form.invalid">Save
+      </button>
+      <button type="submit" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </div><!-- /.modal-footer -->
+
+</div> <!-- /.modal-content -->
+

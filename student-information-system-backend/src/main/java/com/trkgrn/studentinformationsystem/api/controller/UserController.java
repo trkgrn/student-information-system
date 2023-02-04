@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveUser(User user){
+    public ResponseEntity<?> saveUser(@RequestBody User user){
         try {
             User savedUser = userService.saveUser(user);
             return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(Long id){
+    public ResponseEntity<?> getUserById(@PathVariable Long id){
         Optional<User> userFromDb = Optional.ofNullable(userService.getUserById(id));
         if (userFromDb.isPresent()) {
             return new ResponseEntity<>(modelMapper.map(userFromDb, UserDto.class), HttpStatus.OK);
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(User user, Long id){
+    public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable Long id){
         Optional<User> updatedUser = Optional.ofNullable(userService.updateUser(user, id));
         if (updatedUser.isPresent()) {
             return new ResponseEntity<>(modelMapper.map(updatedUser, UserDto.class), HttpStatus.OK);
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserById(Long id){
+    public ResponseEntity<?> deleteUserById(@PathVariable Long id){
         try {
             userService.deleteUserById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

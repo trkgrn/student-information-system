@@ -46,15 +46,12 @@ public class UserService {
         Optional<User> userOptional = this.userRepository.findById(id);
         if (userOptional.isPresent()){
             User updatedUser = userOptional.get();
-            updatedUser.setUserId(id);
             updatedUser.setTckNo(user.getTckNo());
             updatedUser.setFirstName(user.getFirstName());
             updatedUser.setLastName(user.getLastName());
             updatedUser.setAddress(user.getAddress());
             updatedUser.setTelNo(user.getTelNo());
             updatedUser.setEmail(user.getEmail());
-            updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
-            updatedUser.setRole(user.getRole());
             return this.userRepository.save(updatedUser);
         }
         return null;

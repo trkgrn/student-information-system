@@ -27,6 +27,15 @@ public class StudentController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getStudentByUserId(@PathVariable Long userId) {
+        Optional<Student> studentFromDb = Optional.ofNullable(studentService.getStudentByUserId(userId));
+        if (studentFromDb.isPresent()) {
+            return new ResponseEntity<>(studentFromDb, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<?> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);

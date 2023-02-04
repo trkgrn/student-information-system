@@ -4,6 +4,7 @@ import com.trkgrn.studentinformationsystem.api.model.entity.Student;
 import com.trkgrn.studentinformationsystem.api.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -23,6 +24,10 @@ public class StudentService {
 
     public Student getStudentById(Long id) {
         return studentRepository.findById(id).orElse(null);
+    }
+
+    public Student getStudentByUserId(Long userId) {
+        return studentRepository.findByUser_UserId(userId).orElse(null);
     }
 
     public void deleteStudentById(Long id) {
