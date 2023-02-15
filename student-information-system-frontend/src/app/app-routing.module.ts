@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: "widgets", component: HomeComponent, canActivate: [AuthGuard], data: {roles: ["TEACHER", "STUDENT", "ADMIN"]}},
   {path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: {roles: ["TEACHER", "STUDENT", "ADMIN"]}},
   {path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
+  {path: 'teacher', loadChildren: () => import('./modules/teacher/teacher.module').then(m => m.TeacherModule), canActivate: [AuthGuard], data: {roles: ["TEACHER"]}},
   {path: 'error', loadChildren: () => import('./modules/error/error.module').then(m => m.ErrorModule)},
   {
     path: 'admin',
