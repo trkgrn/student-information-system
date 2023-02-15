@@ -4,6 +4,7 @@ import com.trkgrn.studentinformationsystem.api.model.entity.LiveLesson;
 import com.trkgrn.studentinformationsystem.api.repository.LiveLessonRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,6 +48,10 @@ public class LiveLessonService {
 
     public Iterable<LiveLesson> getAllLiveLessons() {
         return liveLessonRepository.findAll();
+    }
+
+    public List<LiveLesson> getLiveLessonByTeacher_User_UserId(Long userId) {
+        return liveLessonRepository.getLiveLessonByTeacher_User_UserId(userId).orElse(null);
     }
 
 }

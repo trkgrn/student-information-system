@@ -21,6 +21,10 @@ public class TeacherService {
         return teacherRepository.findById(id).orElse(null);
     }
 
+    public Teacher getTeacherByUserId(Long userId) {
+        return teacherRepository.findByUser_UserId(userId).orElse(null);
+    }
+
     public void deleteTeacherById(Long id) {
         teacherRepository.deleteById(id);
     }

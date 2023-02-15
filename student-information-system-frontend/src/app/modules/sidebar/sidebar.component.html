@@ -44,6 +44,14 @@
             <!-- ADMIN -->
             <ul *ngIf="authService.getRole() ==='ADMIN'" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+              <li class="nav-item">
+                <a routerLink="/profile" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    My Profile
+                  </p>
+                </a>
+              </li>
               <li class="nav-header">USERS</li>
               <li class="nav-item ">
                 <a href="#" class="nav-link" id="teacher">
@@ -135,175 +143,44 @@
             <!-- TEACHER -->
             <ul *ngIf="authService.getRole() ==='TEACHER'" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+              <li class="nav-item">
+                <a routerLink="/profile" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    My Profile
+                  </p>
+                </a>
+              </li>
               <li class="nav-item ">
-                <a href="#" class="nav-link" id="dashboard2">
+                <a href="#" class="nav-link" id="lesson-teacher">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
-                    Dashboard
+                    Lesson
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a routerLink="/a/home" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
+                    <a routerLink="/teacher/lessons" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-teacher')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v1</p>
+                      <p>Live Lesson (active)</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a routerLink="/a/home2" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
+                    <a routerLink="/a/home2" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-teacher')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a routerLink="/a/home3" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v3</p>
+                      <p>My Students</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a routerLink="/widgets" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Widgets
-                    <span class="right badge badge-danger">New</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Layout Options
-                    <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">6</span>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation + Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/boxed.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Boxed</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Navbar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-footer.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Footer</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Collapsed Sidebar</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-header">EXAMPLES</li>
-              <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>
-                    Calendar
-                    <span class="badge badge-info right">2</span>
-                  </p>
-                </a>
-              </li>
+              <li class="nav-header">E-Learning</li>
               <li class="nav-item">
                 <a href="pages/gallery.html" class="nav-link">
                   <i class="nav-icon far fa-image"></i>
                   <p>
                     Gallery
                   </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>
-                    Search
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/search/simple.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Simple Search</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/search/enhanced.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Enhanced</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-header">MISCELLANEOUS</li>
-              <li class="nav-item">
-                <a href="iframe.html" class="nav-link">
-                  <i class="nav-icon fas fa-ellipsis-h"></i>
-                  <p>Tabbed IFrame Plugin</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
-                </a>
-              </li>
-              <li class="nav-header">LABELS</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Important</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Warning</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Informational</p>
                 </a>
               </li>
             </ul>
@@ -311,175 +188,44 @@
             <!-- STUDENT -->
             <ul *ngIf="authService.getRole() ==='STUDENT'" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-              <li class="nav-item ">
-                <a href="#" class="nav-link" id="dashboard3">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+              <li class="nav-item">
+                <a routerLink="/profile" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-user"></i>
                   <p>
-                    Dashboard
+                    My Profile
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a href="#" class="nav-link" id="lesson-tree">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>
+                    Lesson Transactions
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a routerLink="/a/home" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
+                    <a routerLink="/a/home" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-tree')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v1</p>
+                      <p>Semester Grade Status</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a routerLink="/a/home2" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
+                    <a routerLink="/a/home2" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-tree')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a routerLink="/a/home3" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('dashboard')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v3</p>
+                      <p>Weekly Lesson Program</p>
                     </a>
                   </li>
                 </ul>
               </li>
+              <li class="nav-header">E-Learning</li>
               <li class="nav-item">
-                <a routerLink="/widgets" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
-                  <i class="nav-icon fas fa-th"></i>
+                <a routerLink="/a/home3" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-th-list"></i>
                   <p>
-                    Widgets
-                    <span class="right badge badge-danger">New</span>
+                    Live Lessons
                   </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Layout Options
-                    <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">6</span>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation + Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/boxed.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Boxed</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Navbar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-footer.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Footer</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Collapsed Sidebar</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-header">EXAMPLES</li>
-              <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>
-                    Calendar
-                    <span class="badge badge-info right">2</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                    Gallery
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>
-                    Search
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/search/simple.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Simple Search</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/search/enhanced.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Enhanced</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-header">MISCELLANEOUS</li>
-              <li class="nav-item">
-                <a href="iframe.html" class="nav-link">
-                  <i class="nav-icon fas fa-ellipsis-h"></i>
-                  <p>Tabbed IFrame Plugin</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
-                </a>
-              </li>
-              <li class="nav-header">LABELS</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Important</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Warning</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Informational</p>
                 </a>
               </li>
             </ul>

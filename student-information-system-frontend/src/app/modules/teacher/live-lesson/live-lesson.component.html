@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th style="width: 10px">#</th>
+        <th>Class</th>
+        <th>Lesson</th>
+        <th>Education Season</th>
+        <th style="width: 40px">Midterm</th>
+        <th style="width: 40px">Final</th>
+        <th>Period</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let liveLesson of lessons">
+        <td>{{liveLesson.liveLessonId}}</td>
+        <td>{{liveLesson._class?.gradeYear + " - " + liveLesson._class?.branch?.name}}</td>
+        <td>{{liveLesson.lesson?.name}}</td>
+        <td>{{liveLesson.educationSeason?.name}}</td>
+        <td><span class="badge bg-blue">{{liveLesson.midtermPercent}}%</span></td>
+        <td><span class="badge bg-blue">{{liveLesson.finalPercent}}%</span></td>
+        <td>{{liveLesson.period?.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!!- /.card -->
+

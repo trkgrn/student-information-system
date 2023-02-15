@@ -1,5 +1,6 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
+import com.trkgrn.studentinformationsystem.api.model.entity.Student;
 import com.trkgrn.studentinformationsystem.api.model.entity.Teacher;
 import com.trkgrn.studentinformationsystem.api.service.TeacherService;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,15 @@ public class TeacherController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getTeacherById(@PathVariable Long id) {
         Optional<?> teacherFromDb = Optional.ofNullable(teacherService.getTeacherById(id));
+        if (teacherFromDb.isPresent()) {
+            return new ResponseEntity<>(teacherFromDb, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getStudentByUserId(@PathVariable Long userId) {
+        Optional<Teacher> teacherFromDb = Optional.ofNullable(teacherService.getTeacherByUserId(userId));
         if (teacherFromDb.isPresent()) {
             return new ResponseEntity<>(teacherFromDb, HttpStatus.OK);
         }

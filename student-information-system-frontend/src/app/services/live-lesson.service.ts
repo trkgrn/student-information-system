@@ -18,6 +18,10 @@ export class LiveLessonService {
     return this.http.get(this.path + '/' + id);
   }
 
+  getByUserId(userId: number) {
+    return this.http.get(this.path + '/teacher/' + userId);
+  }
+
   create(liveLesson: any) {
     return this.http.post(this.path, liveLesson);
   }
