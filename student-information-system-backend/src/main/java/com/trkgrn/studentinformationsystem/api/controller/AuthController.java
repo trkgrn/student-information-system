@@ -3,7 +3,6 @@ package com.trkgrn.studentinformationsystem.api.controller;
 import com.trkgrn.studentinformationsystem.api.model.dto.UserDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.service.AuthService;
-import com.trkgrn.studentinformationsystem.api.service.UserService;
 import com.trkgrn.studentinformationsystem.config.security.jwt.model.AuthRequest;
 import com.trkgrn.studentinformationsystem.config.security.jwt.model.AuthResponse;
 import org.modelmapper.ModelMapper;

@@ -85,7 +85,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/api/live-lesson/**",
             "/api/note/**",
             "/api/letter-grade/**",
-            "/api/education-season/**" };
+            "/api/education-season/**",
+            "/api/lesson-request/**"};
 
 
 }
