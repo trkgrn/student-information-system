@@ -6,6 +6,7 @@ import {BranchComponent} from "./branch/branch.component";
 import {ClassComponent} from "./class/class.component";
 import {LessonComponent} from "./lesson/lesson.component";
 import {LiveLessonComponent} from "./live-lesson/live-lesson.component";
+import {LessonRequestComponent} from "./lesson-request/lesson-request.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'branch', component: BranchComponent},
   {path: 'class', component: ClassComponent},
   {path: 'lesson', component: LessonComponent},
-  {path: 'live-lesson', component: LiveLessonComponent}
+  {path: 'live-lesson', component: LiveLessonComponent},
+  {path: 'lesson-request', component: LessonRequestComponent},
 ];
 
 @NgModule({

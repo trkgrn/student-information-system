@@ -33,4 +33,8 @@ export class LiveLessonService {
   delete(id: number) {
     return this.http.delete(this.path + '/' + id);
   }
+
+  getAvailableLessons() {
+    return this.http.get(this.path + '/available');
+  }
 }

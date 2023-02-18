@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -48,4 +49,7 @@ public class LiveLesson {
     @OneToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")
     private Teacher teacher;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "liveLesson")
+    private List<LessonRequest> lessonRequest;
 }

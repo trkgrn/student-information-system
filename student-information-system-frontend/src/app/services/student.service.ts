@@ -34,4 +34,8 @@ export class StudentService {
   delete(id: number) {
     return this.http.delete(this.path + '/' + id);
   }
+
+  getAuthenticatedStudent() {
+    return this.http.get(this.path + '/findByJwt');
+  }
 }

@@ -1,6 +1,7 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
 import com.trkgrn.studentinformationsystem.api.model.entity.Student;
+import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,12 @@ import java.util.UUID;
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final UserService userService;
 
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository, UserService userService) {
         this.studentRepository = studentRepository;
+        this.userService = userService;
     }
 
     public Student saveStudent(Student student) {
@@ -28,6 +31,15 @@ public class StudentService {
 
     public Student getStudentByUserId(Long userId) {
         return studentRepository.findByUser_UserId(userId).orElse(null);
+    }
+
+    public Optional<Student> getAuthanticatedStudent(){
+        Optional<User> user = Optional.ofNullable(userService.findByJwt());
+        if (user.isPresent()){
+            Optional<Student> student = Optional.ofNullable(getStudentByUserId(user.get().getUserId()));
+            return student;
+        }
+        return null;
     }
 
     public void deleteStudentById(Long id) {

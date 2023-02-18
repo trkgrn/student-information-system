@@ -80,9 +80,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a routerLink="/a/home2" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('student')">
+                    <a routerLink="/admin/lesson-request" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('student')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v1</p>
+                      <p>Lesson Request</p>
                     </a>
                   </li>
                 </ul>
@@ -218,6 +218,14 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/student/lesson-request" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-pen"></i>
+                  <p>
+                    Lesson Request
+                  </p>
+                </a>
               </li>
               <li class="nav-header">E-Learning</li>
               <li class="nav-item">

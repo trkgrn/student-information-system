@@ -4,6 +4,7 @@ import com.trkgrn.studentinformationsystem.api.model.entity.LessonRequest;
 import com.trkgrn.studentinformationsystem.api.repository.LessonRequestRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,7 +44,37 @@ public class LessonRequestService {
         return null;
     }
 
-    public Iterable<LessonRequest> getAllLessonRequests() {
+    public List<LessonRequest> getAllLessonRequests() {
         return lessonRequestRepository.findAll();
+    }
+
+    public List<LessonRequest> getLessonRequestByStudent_StudentId(Long studentId) {
+        return lessonRequestRepository.getLessonRequestByStudent_StudentId(studentId).orElse(null);
+    }
+
+    public List<LessonRequest> getLessonRequestsByIsApprovedIsNull() {
+        return lessonRequestRepository.getLessonRequestsByIsApprovedIsNull().orElse(null);
+    }
+
+    public LessonRequest approveLessonRequest(Long id) {
+        Optional<LessonRequest> lessonRequestOptional = lessonRequestRepository.findById(id);
+
+        if (lessonRequestOptional.isPresent()) {
+            LessonRequest updatedLessonRequest = lessonRequestOptional.get();
+            updatedLessonRequest.setIsApproved(true);
+            return lessonRequestRepository.save(updatedLessonRequest);
+        }
+        return null;
+    }
+
+    public LessonRequest rejectLessonRequest(Long id){
+        Optional<LessonRequest> lessonRequestOptional = lessonRequestRepository.findById(id);
+
+        if (lessonRequestOptional.isPresent()) {
+            LessonRequest updatedLessonRequest = lessonRequestOptional.get();
+            updatedLessonRequest.setIsApproved(false);
+            return lessonRequestRepository.save(updatedLessonRequest);
+        }
+        return null;
     }
 }

@@ -20,7 +20,7 @@ public class LessonRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long lessonRequestId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "live_lesson_id")
     private LiveLesson liveLesson;
 

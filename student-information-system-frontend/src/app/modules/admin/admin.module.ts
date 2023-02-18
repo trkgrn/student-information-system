@@ -13,6 +13,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { LessonFormModalComponent } from './modals/lesson-form-modal/lesson-form-modal.component';
 import { LiveLessonComponent } from './live-lesson/live-lesson.component';
 import { LiveLessonFormModalComponent } from './modals/live-lesson-form-modal/live-lesson-form-modal.component';
+import { LessonRequestComponent } from './lesson-request/lesson-request.component';
 
 
 
@@ -27,7 +28,8 @@ import { LiveLessonFormModalComponent } from './modals/live-lesson-form-modal/li
     LessonComponent,
     LessonFormModalComponent,
     LiveLessonComponent,
-    LiveLessonFormModalComponent
+    LiveLessonFormModalComponent,
+    LessonRequestComponent
   ],
   imports: [
     CommonModule,

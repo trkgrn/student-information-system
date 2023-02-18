@@ -1,7 +1,9 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
+import com.trkgrn.studentinformationsystem.api.model.dto.StudentDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.Student;
 import com.trkgrn.studentinformationsystem.api.service.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.Optional;
 public class StudentController {
 
     private final StudentService studentService;
+    private final ModelMapper modelMapper;
 
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, ModelMapper modelMapper) {
         this.studentService = studentService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/{id}")
@@ -35,6 +39,7 @@ public class StudentController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllStudents() {
@@ -68,5 +73,14 @@ public ResponseEntity<?> saveStudent(@RequestBody Student student) {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/findByJwt")
+    public ResponseEntity<?> findByJwt(){
+        Optional<Student> student = studentService.getAuthanticatedStudent();
+        if (student.isPresent()) {
+            return new ResponseEntity<>(modelMapper.map(student, StudentDto.class), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

@@ -1,6 +1,8 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
 import com.trkgrn.studentinformationsystem.api.model.entity.LiveLesson;
+import com.trkgrn.studentinformationsystem.api.model.entity.Student;
+import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.repository.LiveLessonRepository;
 import org.springframework.stereotype.Service;
 
@@ -46,12 +48,24 @@ public class LiveLessonService {
         return null;
     }
 
-    public Iterable<LiveLesson> getAllLiveLessons() {
+    public List<LiveLesson> getAllLiveLessons() {
         return liveLessonRepository.findAll();
+    }
+
+    public List<LiveLesson> getLiveLessonByIsActiveIsTrue() {
+        return liveLessonRepository.getLiveLessonByIsActiveIsTrue().orElse(null);
     }
 
     public List<LiveLesson> getLiveLessonByTeacher_User_UserId(Long userId) {
         return liveLessonRepository.getLiveLessonByTeacher_User_UserId(userId).orElse(null);
+    }
+
+    public List<LiveLesson> getLiveLessonByStudent_User_UserId(Long userId) {
+        return liveLessonRepository.getLiveLessonsByLessonRequest_Student_User_UserId(userId).orElse(null);
+    }
+
+    public List<LiveLesson> getAvailableLiveLessonsByStudent(Student student) {
+        return liveLessonRepository.getAvailableLiveLessonsByStudentId(student.getStudentId()).orElse(null);
     }
 
 }
