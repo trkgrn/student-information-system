@@ -4,6 +4,7 @@ import com.trkgrn.studentinformationsystem.api.model.entity.Note;
 import com.trkgrn.studentinformationsystem.api.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,6 +49,14 @@ public class NoteService {
 
     public void deleteNoteById(Long id) {
         noteRepository.deleteById(id);
+    }
+
+    public Optional<List<Note>> getNotesByStudent_StudentIdAndLiveLesson_IsActiveIsTrue(Long studentId) {
+        return noteRepository.getNotesByStudent_StudentIdAndLiveLesson_IsActiveIsTrue(studentId);
+    }
+
+    public Optional<List<Note>> getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_Name(Long studentId, Long educationSeasonId) {
+        return noteRepository.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_EducationSeasonId(studentId, educationSeasonId);
     }
 
 

@@ -1,21 +1,27 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
+import com.trkgrn.studentinformationsystem.api.model.dto.NoteDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.Note;
 import com.trkgrn.studentinformationsystem.api.service.NoteService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/note")
 public class NoteController {
 
     private final NoteService noteService;
+    private final ModelMapper modelMapper;
 
-    public NoteController(NoteService noteService) {
+    public NoteController(NoteService noteService, ModelMapper modelMapper) {
         this.noteService = noteService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/{id}")
@@ -60,5 +66,30 @@ public class NoteController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
+    @GetMapping("/student/{studentId}/livelesson/active")
+    public ResponseEntity<?> getNotesByStudent_StudentIdAndLiveLesson_IsActiveIsTrue(@PathVariable Long studentId) {
+        Optional<List<Note>> notes = noteService.getNotesByStudent_StudentIdAndLiveLesson_IsActiveIsTrue(studentId);
+        if (notes.isPresent()) {
+            return new ResponseEntity<>(notes.get()
+                    .stream()
+                    .map(it->modelMapper.map(it, NoteDto.class))
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/student/{studentId}/livelesson/educationseason/{educationSeasonId}")
+    public ResponseEntity<?> getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_Name(@PathVariable Long studentId, @PathVariable Long educationSeasonId) {
+        Optional<List<Note>> notes = noteService.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_Name(studentId, educationSeasonId);
+        if (notes.isPresent()) {
+            return new ResponseEntity<>(notes.get()
+                    .stream()
+                    .map(it->modelMapper.map(it,NoteDto.class))
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
 }

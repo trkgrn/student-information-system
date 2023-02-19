@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header mb-3">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Semester Grade Status</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Semester Grade</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<div class="card mr-5 ml-5">
+  <div class="card-header">
+    <div class="card-title">My Grades</div>
+    <div class="card-tools">
+      <select class="select2-red">
+        <option selected="selected">2020-2021</option>
+        <option>2019-2020</option>
+        <option>2018-2019</option>
+      </select>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th style="width: 10px">#</th>
+        <th>Lesson Code</th>
+        <th>Lesson</th>
+        <th>Midterm Exam</th>
+        <th>Final Exam</th>
+        <th>Average</th>
+        <th>Letter Grade</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let note of notes">
+        <td>{{note.noteId}}</td>
+        <td>{{note.liveLesson?.lesson?.code}}</td>
+        <td>{{note.liveLesson?.lesson?.name}}</td>
+        <td>{{note.midtermExam }}</td>
+        <td>{{note.finalExam}}</td>
+        <td>{{note.average}}</td>
+        <td>{{note.letterGrade?.grade}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
