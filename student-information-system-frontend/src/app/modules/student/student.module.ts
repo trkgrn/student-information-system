@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LessonRequestComponent } from './lesson-request/lesson-request.component';
 import {StudentRoutingModule} from "./student-routing.module";
 import { SemesterGradeComponent } from './semester-grade/semester-grade.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -13,7 +14,8 @@ import { SemesterGradeComponent } from './semester-grade/semester-grade.componen
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    FormsModule
   ]
 })
 export class StudentModule { }

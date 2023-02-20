@@ -19,11 +19,12 @@
   <div class="card-header">
     <div class="card-title">My Grades</div>
     <div class="card-tools">
-      <select class="select2-red">
-        <option selected="selected">2020-2021</option>
-        <option>2019-2020</option>
-        <option>2018-2019</option>
-      </select>
+      <form #semesterForm="ngForm">
+        <select name="semester" class="form-control" #semester="ngModel" [(ngModel)]="selectedSemester" (change)="notesBySemester()">
+          <option [ngValue]="semester" *ngFor="let semester of semesters">{{semester.educationSeason?.name + " " + semester.period?.name}}</option>
+        </select>
+      </form>
+
     </div>
   </div>
   <!-- /.card-header -->

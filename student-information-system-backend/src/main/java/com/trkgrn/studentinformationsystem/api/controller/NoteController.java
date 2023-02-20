@@ -1,6 +1,7 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
 import com.trkgrn.studentinformationsystem.api.model.dto.NoteDto;
+import com.trkgrn.studentinformationsystem.api.model.dto.SemesterDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.Note;
 import com.trkgrn.studentinformationsystem.api.service.NoteService;
 import org.modelmapper.ModelMapper;
@@ -82,6 +83,27 @@ public class NoteController {
     @GetMapping("/student/{studentId}/livelesson/educationseason/{educationSeasonId}")
     public ResponseEntity<?> getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_Name(@PathVariable Long studentId, @PathVariable Long educationSeasonId) {
         Optional<List<Note>> notes = noteService.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_Name(studentId, educationSeasonId);
+        if (notes.isPresent()) {
+            return new ResponseEntity<>(notes.get()
+                    .stream()
+                    .map(it->modelMapper.map(it,NoteDto.class))
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/student/{studentId}/semester")
+    public ResponseEntity<?> getSemestersByStudent_StudentId(@PathVariable Long studentId) {
+        Optional<List<SemesterDto>> semesters = noteService.getSemestersByStudent_StudentId(studentId);
+        if (semesters.isPresent()) {
+            return new ResponseEntity<>(semesters.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/student/{studentId}/educationseason/{educationSeasonId}/period/{periodId}")
+    public ResponseEntity<?> getNotesByStudentIdAndSemester(@PathVariable Long studentId, @PathVariable Long educationSeasonId, @PathVariable Long periodId) {
+        Optional<List<Note>> notes = noteService.getNotesByStudentIdAndSemester(studentId, educationSeasonId, periodId);
         if (notes.isPresent()) {
             return new ResponseEntity<>(notes.get()
                     .stream()
