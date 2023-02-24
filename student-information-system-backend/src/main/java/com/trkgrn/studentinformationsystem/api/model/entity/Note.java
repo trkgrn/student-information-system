@@ -40,7 +40,7 @@ public class Note {
     @JoinColumn(name = "student_id",referencedColumnName = "student_id")
     private Student student;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "live_lesson_id",referencedColumnName = "live_lesson_id")
     private LiveLesson liveLesson;
 }

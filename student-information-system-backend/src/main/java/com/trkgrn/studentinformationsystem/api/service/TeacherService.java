@@ -1,16 +1,21 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
 import com.trkgrn.studentinformationsystem.api.model.entity.Teacher;
+import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
+    private final UserService userService;
 
-    public TeacherService(TeacherRepository teacherRepository) {
+    public TeacherService(TeacherRepository teacherRepository, UserService userService) {
         this.teacherRepository = teacherRepository;
+        this.userService = userService;
     }
 
     public Teacher saveTeacher(Teacher teacher) {
@@ -44,5 +49,14 @@ public class TeacherService {
 
     public Iterable<Teacher> getAllTeachers() {
         return teacherRepository.findAll();
+    }
+
+    public Optional<Teacher> getAuthanticatedTeacher(){
+        Optional<User> user = Optional.ofNullable(userService.findByJwt());
+        if (user.isPresent()){
+            Optional<Teacher> teacher = Optional.ofNullable(getTeacherByUserId(user.get().getUserId()));
+            return teacher;
+        }
+        return null;
     }
 }

@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface LiveLessonRepository extends JpaRepository<LiveLesson, Long> {
-    Optional<List<LiveLesson>> getLiveLessonByTeacher_User_UserId(Long userId);
+    Optional<List<LiveLesson>> getLiveLessonsByTeacher_TeacherId(Long teacherId);
 
-    Optional<List<LiveLesson>> getLiveLessonsByLessonRequest_Student_User_UserId(Long userId);
+    Optional<List<LiveLesson>> getLiveLessonsByLessonRequest_Student_StudentId(Long studentId);
 
     Optional<List<LiveLesson>> getLiveLessonByIsActiveIsTrue();
 

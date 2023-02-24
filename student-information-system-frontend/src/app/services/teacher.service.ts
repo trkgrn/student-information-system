@@ -30,4 +30,8 @@ export class TeacherService {
   delete(id: number) {
     return this.http.delete(this.path + '/' + id);
   }
+
+  getAuthenticatedTeacher() {
+    return this.http.get(this.path + '/findByJwt');
+  }
 }

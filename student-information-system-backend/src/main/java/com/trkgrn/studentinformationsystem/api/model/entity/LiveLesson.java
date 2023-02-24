@@ -1,5 +1,6 @@
 package com.trkgrn.studentinformationsystem.api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(schema = "public", name = "live_lesson")
+@JsonIgnoreProperties({"lessonRequest","notes"})
 public class LiveLesson {
 
     @Id
@@ -30,26 +32,29 @@ public class LiveLesson {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "period_id", referencedColumnName = "period_id")
     private Period period;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "education_season_id", referencedColumnName = "education_season_id")
     private EducationSeason educationSeason;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "class_id", referencedColumnName = "class_id")
     private Class _class;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "lesson_id", referencedColumnName = "lesson_id")
     private Lesson lesson;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")
     private Teacher teacher;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "liveLesson")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "liveLesson",targetEntity = LessonRequest.class)
     private List<LessonRequest> lessonRequest;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "liveLesson",targetEntity = Note.class)
+    private List<Note> notes;
 }

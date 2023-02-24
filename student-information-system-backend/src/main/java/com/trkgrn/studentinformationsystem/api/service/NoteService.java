@@ -3,6 +3,7 @@ package com.trkgrn.studentinformationsystem.api.service;
 import com.trkgrn.studentinformationsystem.api.model.dto.SemesterDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.Note;
 import com.trkgrn.studentinformationsystem.api.repository.NoteRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.Optional;
 public class NoteService {
 
     private final NoteRepository noteRepository;
+    private final ModelMapper modelMapper;
 
-    public NoteService(NoteRepository noteRepository) {
+    public NoteService(NoteRepository noteRepository, ModelMapper modelMapper) {
         this.noteRepository = noteRepository;
+        this.modelMapper = modelMapper;
     }
 
     public Note saveNote(Note note) {
@@ -60,13 +63,14 @@ public class NoteService {
         return noteRepository.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_EducationSeasonId(studentId, educationSeasonId);
     }
 
-    public Optional<List<SemesterDto>> getSemestersByStudent_StudentId(Long studentId){
+    public Optional<List<SemesterDto>> getSemestersByStudent_StudentId(Long studentId) {
         return noteRepository.getSemestersByStudent_StudentId(studentId);
     }
 
-    public Optional<List<Note>> getNotesByStudentIdAndSemester(Long studentId, Long educationSeasonId, Long periodId){
+    public Optional<List<Note>> getNotesByStudentIdAndSemester(Long studentId, Long educationSeasonId, Long periodId) {
         return noteRepository.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_EducationSeasonIdAndLiveLesson_Period_PeriodId(studentId, educationSeasonId, periodId);
     }
+
 
 
 

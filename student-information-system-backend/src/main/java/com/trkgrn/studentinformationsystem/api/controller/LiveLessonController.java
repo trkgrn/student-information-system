@@ -1,15 +1,14 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
 import com.trkgrn.studentinformationsystem.api.model.dto.LiveLessonDto;
+import com.trkgrn.studentinformationsystem.api.model.dto.NotesByLiveLessonDto;
+import com.trkgrn.studentinformationsystem.api.model.entity.LiveLesson;
 import com.trkgrn.studentinformationsystem.api.model.entity.Student;
 import com.trkgrn.studentinformationsystem.api.service.LiveLessonService;
-import com.trkgrn.studentinformationsystem.api.model.entity.LiveLesson;
 import com.trkgrn.studentinformationsystem.api.service.StudentService;
 import com.trkgrn.studentinformationsystem.api.service.TeacherService;
 import com.trkgrn.studentinformationsystem.api.service.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -86,9 +85,9 @@ public class LiveLessonController {
         }
     }
 
-    @GetMapping("/teacher/{userId}")
-    public ResponseEntity<?> getLiveLessonByUserId(@PathVariable Long userId) {
-        Optional<List<LiveLesson>> liveLessonFromDb = Optional.ofNullable(liveLessonService.getLiveLessonByTeacher_User_UserId(userId));
+    @GetMapping("/teacher/{teacherId}")
+    public ResponseEntity<?> getLiveLessonByTeacherId(@PathVariable Long teacherId) {
+        Optional<List<LiveLesson>> liveLessonFromDb = liveLessonService.getLiveLessonsByTeacher_TeacherId(teacherId);
         if (liveLessonFromDb.isPresent()) {
             return new ResponseEntity<>(liveLessonFromDb.get()
                     .stream()
@@ -98,9 +97,18 @@ public class LiveLessonController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/student/{userId}")
-    public ResponseEntity<?> getLiveLessonByStudentUserId(@PathVariable Long userId) {
-        Optional<List<LiveLesson>> liveLessonFromDb = Optional.ofNullable(liveLessonService.getLiveLessonByStudent_User_UserId(userId));
+    @GetMapping("/teacher/{teacherId}/notes")
+    public ResponseEntity<?> getLiveLessonOfNotesByTeacherId(@PathVariable Long teacherId) {
+        Optional<List<NotesByLiveLessonDto>> notesFromDb = Optional.ofNullable(liveLessonService.getNotesByLiveLesson_Teacher_TeacherId(teacherId));
+        if (notesFromDb.isPresent()) {
+            return new ResponseEntity<>(notesFromDb.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<?> getLiveLessonByStudentStudentId(@PathVariable Long studentId) {
+        Optional<List<LiveLesson>> liveLessonFromDb = Optional.ofNullable(liveLessonService.getLiveLessonByStudent_StudentId(studentId));
         if (liveLessonFromDb.isPresent()) {
             return new ResponseEntity<>(liveLessonFromDb.get()
                     .stream()

@@ -4,6 +4,8 @@ import {LiveLesson} from "../../../models/entity/LiveLesson";
 import {UserService} from "../../../services/user.service";
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../models/entity/User";
+import {TeacherService} from "../../../services/teacher.service";
+import {Teacher} from "../../../models/entity/Teacher";
 
 @Component({
   selector: 'app-live-lesson',
@@ -13,11 +15,11 @@ import {User} from "../../../models/entity/User";
 export class LiveLessonComponent implements OnInit {
 
   lessons:LiveLesson[] = [];
-  constructor(private liveLessonService:LiveLessonService,private authService:AuthService) { }
+  constructor(private liveLessonService:LiveLessonService,private authService:AuthService,private teacherService:TeacherService) { }
 
   async ngOnInit() {
-    let user:User = await this.authService.getAuthenticatedUser();
-    this.lessons = await this.liveLessonService.getByUserId(user.userId as number);
+    let teacher:Teacher = await this.teacherService.getAuthenticatedTeacher();
+    this.lessons = await this.liveLessonService.getByTeacherId(teacher.teacherId as number);
     this.lessons = this.lessons.filter(lesson => lesson.isActive == true);
   }
 
