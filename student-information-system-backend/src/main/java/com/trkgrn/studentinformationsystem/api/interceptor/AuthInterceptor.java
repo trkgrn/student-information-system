@@ -46,7 +46,6 @@ public class AuthInterceptor implements HandlerInterceptor {
             String jwt = request.getHeader("Authorization").substring(7);
             String tckNo = "";
             Token tokenObj;
-
             try {
                 tckNo = jwtUtil.extractUsername(jwt);
                 tokenObj = tokenService.findTokenByTckNo(tckNo);

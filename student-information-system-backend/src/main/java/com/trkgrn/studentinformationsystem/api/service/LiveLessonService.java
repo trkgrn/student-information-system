@@ -1,25 +1,31 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
+import com.trkgrn.studentinformationsystem.api.model.dto.GradeDto;
+import com.trkgrn.studentinformationsystem.api.model.dto.LiveLessonDto;
+import com.trkgrn.studentinformationsystem.api.model.dto.NotesByLiveLessonDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.LiveLesson;
 import com.trkgrn.studentinformationsystem.api.model.entity.Student;
-import com.trkgrn.studentinformationsystem.api.model.entity.User;
 import com.trkgrn.studentinformationsystem.api.repository.LiveLessonRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LiveLessonService {
 
     private final LiveLessonRepository liveLessonRepository;
+    private final ModelMapper modelMapper;
 
-    public LiveLessonService(LiveLessonRepository liveLessonRepository) {
+    public LiveLessonService(LiveLessonRepository liveLessonRepository, ModelMapper modelMapper) {
         this.liveLessonRepository = liveLessonRepository;
+        this.modelMapper = modelMapper;
     }
 
     public LiveLesson saveLiveLesson(LiveLesson liveLesson) {
-       return liveLessonRepository.save(liveLesson);
+        return liveLessonRepository.save(liveLesson);
     }
 
     public LiveLesson getLiveLessonById(Long id) {
@@ -30,7 +36,7 @@ public class LiveLessonService {
         liveLessonRepository.deleteById(id);
     }
 
-    public LiveLesson updateLiveLesson(LiveLesson liveLesson,Long id){
+    public LiveLesson updateLiveLesson(LiveLesson liveLesson, Long id) {
         Optional<LiveLesson> liveLessonOptional = liveLessonRepository.findById(id);
         if (liveLessonOptional.isPresent()) {
             LiveLesson updatedLiveLesson = liveLessonOptional.get();
@@ -56,16 +62,31 @@ public class LiveLessonService {
         return liveLessonRepository.getLiveLessonByIsActiveIsTrue().orElse(null);
     }
 
-    public List<LiveLesson> getLiveLessonByTeacher_User_UserId(Long userId) {
-        return liveLessonRepository.getLiveLessonByTeacher_User_UserId(userId).orElse(null);
+    public Optional<List<LiveLesson>> getLiveLessonsByTeacher_TeacherId(Long teacherId) {
+        return liveLessonRepository.getLiveLessonsByTeacher_TeacherId(teacherId);
     }
 
-    public List<LiveLesson> getLiveLessonByStudent_User_UserId(Long userId) {
-        return liveLessonRepository.getLiveLessonsByLessonRequest_Student_User_UserId(userId).orElse(null);
+    public List<LiveLesson> getLiveLessonByStudent_StudentId(Long studentId) {
+        return liveLessonRepository.getLiveLessonsByLessonRequest_Student_StudentId(studentId).orElse(null);
     }
 
     public List<LiveLesson> getAvailableLiveLessonsByStudent(Student student) {
         return liveLessonRepository.getAvailableLiveLessonsByStudentId(student.getStudentId()).orElse(null);
+    }
+
+    public List<NotesByLiveLessonDto> getNotesByLiveLesson_Teacher_TeacherId(Long teacherId) {
+        List<LiveLesson> liveLessons = liveLessonRepository.getLiveLessonsByTeacher_TeacherId(teacherId).orElse(null);
+        List<NotesByLiveLessonDto> notes =liveLessons.
+                stream()
+                .map(liveLesson -> new NotesByLiveLessonDto(modelMapper.map(liveLesson, LiveLessonDto.class),
+                        liveLesson.getNotes()
+                                .stream()
+                                .map(note -> modelMapper.map(note, GradeDto.class))
+                                .collect(Collectors.toList())))
+                .collect(Collectors.toList());
+
+
+        return notes;
     }
 
 }
