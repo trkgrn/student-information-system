@@ -23,5 +23,4 @@ public interface NoteRepository extends JpaRepository<Note,Long> {
             "AND l.educationSeason.educationSeasonId = e.educationSeasonId " +
             "AND s.studentId = :#{#studentId}")
     Optional<List<SemesterDto>> getSemestersByStudent_StudentId(Long studentId);
-
 }

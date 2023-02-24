@@ -4,7 +4,6 @@ import com.trkgrn.studentinformationsystem.api.model.entity.Role;
 import com.trkgrn.studentinformationsystem.api.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

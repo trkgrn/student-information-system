@@ -1,7 +1,7 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
-import com.trkgrn.studentinformationsystem.api.repository.LetterGradeRepository;
 import com.trkgrn.studentinformationsystem.api.model.entity.LetterGrade;
+import com.trkgrn.studentinformationsystem.api.repository.LetterGradeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

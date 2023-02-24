@@ -1,7 +1,7 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
-import com.trkgrn.studentinformationsystem.api.service.LetterGradeService;
 import com.trkgrn.studentinformationsystem.api.model.entity.LetterGrade;
+import com.trkgrn.studentinformationsystem.api.service.LetterGradeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

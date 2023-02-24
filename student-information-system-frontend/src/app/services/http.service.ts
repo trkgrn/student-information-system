@@ -7,8 +7,6 @@ import {environment} from "../../environments/environment";
 })
 export class HttpService {
 
-  private header: HttpHeaders | undefined;
-
   constructor(private http: HttpClient) {
   }
 
