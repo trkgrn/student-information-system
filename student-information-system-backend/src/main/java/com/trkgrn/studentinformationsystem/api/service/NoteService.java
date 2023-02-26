@@ -14,10 +14,12 @@ public class NoteService {
 
     private final NoteRepository noteRepository;
     private final ModelMapper modelMapper;
+    private final CalculateService calculateService;
 
-    public NoteService(NoteRepository noteRepository, ModelMapper modelMapper) {
+    public NoteService(NoteRepository noteRepository, ModelMapper modelMapper, CalculateService calculateService) {
         this.noteRepository = noteRepository;
         this.modelMapper = modelMapper;
+        this.calculateService = calculateService;
     }
 
     public Note saveNote(Note note) {
@@ -33,13 +35,11 @@ public class NoteService {
 
         if (noteOptional.isPresent()) {
             Note updatedNote = noteOptional.get();
-            updatedNote.setNoteId(id);
-            updatedNote.setAverage(note.getAverage());
-            updatedNote.setState(note.getState());
-            updatedNote.setStudent(note.getStudent());
+            note.setLiveLesson(updatedNote.getLiveLesson());
+            note = calculateService.calculateNote(note);
             updatedNote.setMidtermExam(note.getMidtermExam());
             updatedNote.setFinalExam(note.getFinalExam());
-            updatedNote.setLiveLesson(note.getLiveLesson());
+            updatedNote.setAverage(note.getAverage());
             updatedNote.setLetterGrade(note.getLetterGrade());
             return noteRepository.save(updatedNote);
         }
@@ -71,7 +71,9 @@ public class NoteService {
         return noteRepository.getNotesByStudent_StudentIdAndLiveLesson_EducationSeason_EducationSeasonIdAndLiveLesson_Period_PeriodId(studentId, educationSeasonId, periodId);
     }
 
-
+    public Optional<List<Note>> getNotesByLiveLesson_LiveLessonId(Long liveLessonId) {
+        return noteRepository.getNotesByLiveLesson_LiveLessonId(liveLessonId);
+    }
 
 
 }

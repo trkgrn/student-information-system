@@ -3,12 +3,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Semester Grade Status</h1>
+        <h1>Notes By Live Lesson</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Semester Grade</li>
+          <li class="breadcrumb-item active">Notes By Live Lesson</li>
         </ol>
       </div>
     </div>
@@ -17,11 +17,14 @@
 
 <div class="card mr-5 ml-5">
   <div class="card-header">
-    <div class="card-title">My Grades</div>
+    <div class="card-title">My Students</div>
     <div class="card-tools">
-      <form #semesterForm="ngForm">
-        <select name="semester" class="form-control" #semester="ngModel" [(ngModel)]="selectedSemester" (change)="notesBySemester()">
-          <option [ngValue]="semester" *ngFor="let semester of semesters">{{semester.educationSeason?.name + " " + semester.period?.name}}</option>
+      <form #notesByLiveLessonForm="ngForm">
+        <select name="semester" class="form-control" #liveLesson="ngModel" [(ngModel)]="selectedLiveLesson"
+                (change)="getNotesByLiveLesson()">
+          <option [ngValue]="liveLesson"
+                  *ngFor="let liveLesson of lessons">{{liveLesson.educationSeason?.name + " / " + liveLesson.period?.name
+          + " / " + liveLesson._class?.gradeYear + "-" + liveLesson._class?.branch?.name + " / " + liveLesson.lesson?.name}}</option>
         </select>
       </form>
 
@@ -33,23 +36,25 @@
       <thead>
       <tr>
         <th style="width: 10px">#</th>
-        <th>Lesson Code</th>
-        <th>Lesson</th>
+        <th>Student No</th>
+        <th>Full Name</th>
         <th>Midterm Exam</th>
         <th>Final Exam</th>
         <th>Average</th>
         <th>Letter Grade</th>
+        <th class="th-btn-small"></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let note of notes">
         <td>{{note.noteId}}</td>
-        <td>{{note.liveLesson?.lesson?.code}}</td>
-        <td>{{note.liveLesson?.lesson?.name}}</td>
+        <td>{{note.student?.studentNo}}</td>
+        <td>{{note.student?.user?.firstName + " " + note.student?.user?.lastName}}</td>
         <td>{{note.midtermExam?.toFixed(2) }}</td>
         <td>{{note.finalExam?.toFixed(2)}}</td>
         <td>{{note.average?.toFixed(2)}}</td>
         <td>{{note.letterGrade?.grade}}</td>
+        <td><button type="button" class="btn btn-warning btn-circle" (click)="updateNote(note)"><i class="fa fa-pen"></i></button></td>
       </tr>
       </tbody>
     </table>

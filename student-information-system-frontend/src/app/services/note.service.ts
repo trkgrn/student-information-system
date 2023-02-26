@@ -45,4 +45,8 @@ export class NoteService {
   getNotesByStudentIdAndSemester(studentId: number, educationSeasonId: number, periodId: number) {
     return this.http.get(this.path + '/student/' + studentId + '/educationseason/' + educationSeasonId + '/period/' + periodId);
   }
+
+  getNotesByLiveLessonId(liveLessonId: number) {
+    return this.http.get(this.path + '/livelesson/' + liveLessonId);
+  }
 }

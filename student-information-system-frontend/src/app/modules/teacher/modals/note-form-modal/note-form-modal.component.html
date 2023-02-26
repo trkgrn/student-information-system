@@ -1,0 +1,43 @@
+<div class="modal-content">
+
+  <div class="modal-header">
+    <h3>{{method}}</h3>
+  </div><!-- /.modal-header -->
+
+  <div class="modal-body">
+
+    <div [formGroup]="form">
+      <label>Midterm Exam</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" placeholder="Midterm Point" formControlName="midtermExam"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-signature"></span>
+          </div>
+        </div>
+      </div>
+
+      <label>Final Exam</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" placeholder="Final Point" formControlName="finalExam"
+               [required]="true">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-signature"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /.modal-body -->
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-outline-success mr-2" (click)="save()" [disabled]="form.invalid">Save
+      </button>
+      <button type="submit" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </div><!-- /.modal-footer -->
+
+</div> <!-- /.modal-content -->
+

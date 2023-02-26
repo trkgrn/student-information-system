@@ -1,5 +1,6 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
+import com.trkgrn.studentinformationsystem.api.model.dto.GradeDto;
 import com.trkgrn.studentinformationsystem.api.model.dto.NoteDto;
 import com.trkgrn.studentinformationsystem.api.model.dto.SemesterDto;
 import com.trkgrn.studentinformationsystem.api.model.entity.Note;
@@ -113,6 +114,16 @@ public class NoteController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    @GetMapping("/livelesson/{liveLessonId}")
+    public ResponseEntity<?> getNotesByLiveLesson_LiveLessonId(@PathVariable Long liveLessonId) {
+        Optional<List<Note>> notes = noteService.getNotesByLiveLesson_LiveLessonId(liveLessonId);
+        if (notes.isPresent()) {
+            return new ResponseEntity<>(notes.get()
+                    .stream()
+                    .map(it->modelMapper.map(it, GradeDto.class))
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 }
