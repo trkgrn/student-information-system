@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 public class NoteDto {
     private Long noteId;
     private String state;
-    private Integer midtermExam;
-    private Integer finalExam;
-    private Integer average;
+    private Double midtermExam;
+    private Double finalExam;
+    private Double average;
     private LetterGrade letterGrade;
     private StudentDto student;
     private LiveLessonDto liveLesson;

@@ -24,13 +24,13 @@ public class Note {
     private String state;
 
     @Column(name = "midterm_exam",nullable = true)
-    private Integer midtermExam;
+    private Double midtermExam;
 
     @Column(name = "final_exam",nullable = true)
-    private Integer finalExam;
+    private Double finalExam;
 
     @Column(name = "average",nullable = true)
-    private Integer average;
+    private Double average;
 
     @OneToOne
     @JoinColumn(name = "letter_grade_id",referencedColumnName = "letter_grade_id")
