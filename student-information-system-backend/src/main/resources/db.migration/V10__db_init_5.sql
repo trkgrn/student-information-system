@@ -20,9 +20,11 @@ CREATE TABLE IF NOT EXISTS public.file
 (
     weekly_notes_id BIGINT NOT NULL,
     file_name       VARCHAR(255),
-    file_type       VARCHAR(255),
+    file_extension  VARCHAR(255),
+    content_type    VARCHAR(255),
     file_size       BIGINT,
     cloud_path      VARCHAR(255),
+    download_url    VARCHAR(255),
     CONSTRAINT "fk_fıle_on_weekly_notes" FOREIGN KEY (weekly_notes_id) REFERENCES public.weekly_notes (weekly_notes_id)
 );
 

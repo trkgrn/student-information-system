@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(AUTH_WHITE_LIST)
                 .permitAll()
                 .antMatchers("/api/user/**")
-                .hasAnyAuthority("STUDENT", "TEACHER","ADMIN")
+                .hasAnyAuthority("STUDENT", "TEACHER", "ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement()
@@ -86,7 +86,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/api/note/**",
             "/api/letter-grade/**",
             "/api/education-season/**",
-            "/api/lesson-request/**"};
+            "/api/lesson-request/**",
+            "/api/weekly-notes/**",
+            "/api/lecture-note/**"};
 
 
 }
