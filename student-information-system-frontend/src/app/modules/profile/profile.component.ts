@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../models/entity/User";
 import {Router} from "@angular/router";
 import {StudentService} from "../../services/student.service";
 import {Student} from "../../models/entity/Student";
 import {ModalService} from "../modal/modal.service";
-import {FacultyFormModalComponent} from "../admin/modals/faculty-form-modal/faculty-form-modal.component";
 import {UserUpdateFormModalComponent} from "./user-update-form-modal/user-update-form-modal.component";
 import {UserService} from "../../services/user.service";
 

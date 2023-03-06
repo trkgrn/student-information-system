@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Faculty} from "../../../../models/entity/Faculty";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalService} from "../../../modal/modal.service";

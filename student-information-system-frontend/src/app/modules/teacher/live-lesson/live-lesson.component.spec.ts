@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LiveLessonComponent } from './live-lesson.component';
+import {LiveLessonComponent} from './live-lesson.component';
 
 describe('LiveLessonComponent', () => {
   let component: LiveLessonComponent;

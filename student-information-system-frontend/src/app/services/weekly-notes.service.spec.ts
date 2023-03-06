@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { WeeklyNotesService } from './weekly-notes.service';
+import {WeeklyNotesService} from './weekly-notes.service';
 
 describe('WeeklyNotesService', () => {
   let service: WeeklyNotesService;

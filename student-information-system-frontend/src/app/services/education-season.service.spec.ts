@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EducationSeasonService } from './education-season.service';
+import {EducationSeasonService} from './education-season.service';
 
 describe('EducationSeasonService', () => {
   let service: EducationSeasonService;

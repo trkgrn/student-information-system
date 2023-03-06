@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { LetterGradeService } from './letter-grade.service';
+import {LetterGradeService} from './letter-grade.service';
 
 describe('LetterGradeService', () => {
   let service: LetterGradeService;

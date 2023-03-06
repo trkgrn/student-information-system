@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ClassService} from "../../../../services/class.service";
 import {TeacherService} from "../../../../services/teacher.service";
 import {LessonService} from "../../../../services/lesson.service";
@@ -10,7 +10,6 @@ import {Lesson} from "../../../../models/entity/Lesson";
 import {LiveLesson} from "../../../../models/entity/LiveLesson";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalService} from "../../../modal/modal.service";
-import {Branch} from "../../../../models/entity/Branch";
 import {OnModalInit} from "../../../modal/abstracts/on-modal-init";
 import {Period} from "../../../../models/entity/Period";
 import {PeriodService} from "../../../../services/period.service";

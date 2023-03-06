@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LessonRequestComponent } from './lesson-request.component';
+import {LessonRequestComponent} from './lesson-request.component';
 
 describe('LessonRequestComponent', () => {
   let component: LessonRequestComponent;

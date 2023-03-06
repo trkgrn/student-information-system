@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OnModalInit} from "../../../modal/abstracts/on-modal-init";
 import {ModalService} from "../../../modal/modal.service";

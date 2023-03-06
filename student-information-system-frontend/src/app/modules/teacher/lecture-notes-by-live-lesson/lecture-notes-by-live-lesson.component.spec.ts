@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LectureNotesByLiveLessonComponent } from './lecture-notes-by-live-lesson.component';
+import {LectureNotesByLiveLessonComponent} from './lecture-notes-by-live-lesson.component';
 
 describe('LectureNotesByLiveLessonComponent', () => {
   let component: LectureNotesByLiveLessonComponent;

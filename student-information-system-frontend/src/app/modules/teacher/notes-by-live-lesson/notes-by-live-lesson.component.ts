@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LiveLesson} from "../../../models/entity/LiveLesson";
 import {LiveLessonService} from "../../../services/live-lesson.service";
 import {AuthService} from "../../../services/auth.service";
 import {TeacherService} from "../../../services/teacher.service";
 import {Teacher} from "../../../models/entity/Teacher";
-import {Student} from "../../../models/entity/Student";
 import {Note} from "../../../models/entity/Note";
-import {Semester} from "../../../models/entity/Semester";
 import {NoteService} from "../../../services/note.service";
-import {LiveLessonFormModalComponent} from "../../admin/modals/live-lesson-form-modal/live-lesson-form-modal.component";
 import {ModalService} from "../../modal/modal.service";
 import {NoteFormModalComponent} from "../modals/note-form-modal/note-form-modal.component";
 

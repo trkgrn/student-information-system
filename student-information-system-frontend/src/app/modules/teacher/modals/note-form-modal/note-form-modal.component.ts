@@ -1,8 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {OnModalInit} from "../../../modal/abstracts/on-modal-init";
-import {Branch} from "../../../../models/entity/Branch";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Faculty} from "../../../../models/entity/Faculty";
 import {FacultyService} from "../../../../services/faculty.service";
 import {ModalService} from "../../../modal/modal.service";
 import {Note} from "../../../../models/entity/Note";

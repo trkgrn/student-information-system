@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../modal/modal.service";
 import Swal from "sweetalert2";
 import {Class} from "../../../models/entity/Class";

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LiveLessonFormModalComponent } from './live-lesson-form-modal.component';
+import {LiveLessonFormModalComponent} from './live-lesson-form-modal.component';
 
 describe('LiveLessonFormModalComponent', () => {
   let component: LiveLessonFormModalComponent;

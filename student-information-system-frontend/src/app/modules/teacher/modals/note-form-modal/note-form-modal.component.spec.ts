@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NoteFormModalComponent } from './note-form-modal.component';
+import {NoteFormModalComponent} from './note-form-modal.component';
 
 describe('NoteFormModalComponent', () => {
   let component: NoteFormModalComponent;

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FacultyFormModalComponent } from './faculty-form-modal.component';
+import {FacultyFormModalComponent} from './faculty-form-modal.component';
 
 describe('FacultyFormModalComponent', () => {
   let component: FacultyFormModalComponent;

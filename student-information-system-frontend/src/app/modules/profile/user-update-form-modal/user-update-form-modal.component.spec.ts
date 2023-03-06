@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserUpdateFormModalComponent } from './user-update-form-modal.component';
+import {UserUpdateFormModalComponent} from './user-update-form-modal.component';
 
 describe('UserUpdateFormModalComponent', () => {
   let component: UserUpdateFormModalComponent;

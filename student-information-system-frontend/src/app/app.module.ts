@@ -24,12 +24,12 @@ import {StudentService} from "./services/student.service";
 import {LessonService} from "./services/lesson.service";
 import {LiveLessonService} from "./services/live-lesson.service";
 import {PeriodService} from "./services/period.service";
-import { ProfileComponent } from './modules/profile/profile.component';
-import { UserUpdateFormModalComponent } from './modules/profile/user-update-form-modal/user-update-form-modal.component';
+import {ProfileComponent} from './modules/profile/profile.component';
+import {UserUpdateFormModalComponent} from './modules/profile/user-update-form-modal/user-update-form-modal.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
-import { FileUploaderComponent } from './modules/resource/file-uploader/file-uploader.component';
+import {FileUploaderComponent} from './modules/resource/file-uploader/file-uploader.component';
 import {FileDragNDropDirective} from "./modules/resource/file-drag-n-drop.directive";
 import {FileUtil} from "./modules/resource/file-util";
 

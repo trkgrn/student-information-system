@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ClassFormModalComponent } from './class-form-modal.component';
+import {ClassFormModalComponent} from './class-form-modal.component';
 
 describe('ClassFormModalComponent', () => {
   let component: ClassFormModalComponent;

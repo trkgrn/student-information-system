@@ -4,7 +4,6 @@ import {Note} from "../../../models/entity/Note";
 import {Student} from "../../../models/entity/Student";
 import {StudentService} from "../../../services/student.service";
 import {Semester} from "../../../models/entity/Semester";
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-semester-grade',

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BranchFormModalComponent } from './branch-form-modal.component';
+import {BranchFormModalComponent} from './branch-form-modal.component';
 
 describe('BranchFormModalComponent', () => {
   let component: BranchFormModalComponent;
