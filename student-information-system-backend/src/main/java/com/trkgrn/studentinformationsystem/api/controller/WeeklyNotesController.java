@@ -1,5 +1,6 @@
 package com.trkgrn.studentinformationsystem.api.controller;
 
+import com.trkgrn.studentinformationsystem.api.model.entity.File;
 import com.trkgrn.studentinformationsystem.api.model.entity.WeeklyNotes;
 import com.trkgrn.studentinformationsystem.api.service.WeeklyNotesService;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,24 @@ public class WeeklyNotesController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PutMapping("/upload-file/{id}")
+    public ResponseEntity<?> uploadFile(@RequestBody File file, @PathVariable Long id) {
+        Optional<WeeklyNotes> updatedWeeklyNotes = Optional.ofNullable(weeklyNotesService.uploadFile(file, id));
+        if (updatedWeeklyNotes.isPresent()) {
+            return new ResponseEntity<>(updatedWeeklyNotes, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/delete-file/{id}")
+    public ResponseEntity<?> deleteFile(@RequestBody File file, @PathVariable Long id) {
+        Optional<WeeklyNotes> updatedWeeklyNotes = Optional.ofNullable(weeklyNotesService.deleteFile(file, id));
+        if (updatedWeeklyNotes.isPresent()) {
+            return new ResponseEntity<>(updatedWeeklyNotes, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

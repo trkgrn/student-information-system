@@ -1,5 +1,6 @@
 package com.trkgrn.studentinformationsystem.api.service;
 
+import com.trkgrn.studentinformationsystem.api.model.entity.File;
 import com.trkgrn.studentinformationsystem.api.model.entity.WeeklyNotes;
 import com.trkgrn.studentinformationsystem.api.repository.WeeklyNotesRepository;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,28 @@ public class WeeklyNotesService {
 
     public List<WeeklyNotes> getAllWeeklyNotes() {
         return weeklyNotesRepository.findAll();
+    }
+
+    public WeeklyNotes uploadFile(File file, Long weeklyNotesId){
+        Optional<WeeklyNotes> weeklyNotesOptional = weeklyNotesRepository.findById(weeklyNotesId);
+        if (weeklyNotesOptional.isPresent()) {
+            WeeklyNotes updatedWeeklyNotes = weeklyNotesOptional.get();
+            updatedWeeklyNotes.getFiles().add(file);
+            return weeklyNotesRepository.save(updatedWeeklyNotes);
+        }
+
+       return null;
+    }
+
+    public WeeklyNotes deleteFile(File file, Long weeklyNotesId){
+        Optional<WeeklyNotes> weeklyNotesOptional = weeklyNotesRepository.findById(weeklyNotesId);
+        if (weeklyNotesOptional.isPresent()) {
+            WeeklyNotes updatedWeeklyNotes = weeklyNotesOptional.get();
+            updatedWeeklyNotes.getFiles().remove(file);
+            return weeklyNotesRepository.save(updatedWeeklyNotes);
+        }
+
+       return null;
     }
 
 
