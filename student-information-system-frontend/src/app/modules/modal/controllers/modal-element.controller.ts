@@ -39,6 +39,11 @@ export class ModalElementController {
     return {modal, container, content, backdrop};
   }
 
+  public setSize(container: HTMLElement,size:string) {
+    container.classList.add('modal-' + size);
+
+  }
+
   public displayModal(modal: HTMLElement, backdrop: HTMLElement) {
     document.body.appendChild(backdrop);
     document.body.appendChild(modal);

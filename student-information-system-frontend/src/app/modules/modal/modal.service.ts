@@ -18,13 +18,8 @@ export class ModalService {
   open(component: Type<unknown>, options: ModalOptions): Modal {
     if (!component) throw new Error();
 
-    // TODO: modal draggable option
-
-    const {
-      modal,
-      content,
-      backdrop
-    } = this.modalElCtrl.createElements(options.containerClass, options.fullscreen, options.scrollable);
+    const {container,modal, content, backdrop,} = this.modalElCtrl.createElements(options.containerClass, options.fullscreen, options.scrollable);
+    this.modalElCtrl.setSize(container, options.size||'md')
 
     if (options.backdropDismiss) {
       this.modalElCtrl.setBackdropDismiss(modal, content, () => {

@@ -5,4 +5,5 @@ export interface ModalOptions {
   backdropDismiss?: boolean;
   fullscreen?: boolean;
   scrollable?: boolean;
+  size?: 'md'| 'sm' | 'lg' | 'xl';
 }
