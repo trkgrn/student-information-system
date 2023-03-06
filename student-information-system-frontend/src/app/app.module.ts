@@ -26,6 +26,12 @@ import {LiveLessonService} from "./services/live-lesson.service";
 import {PeriodService} from "./services/period.service";
 import { ProfileComponent } from './modules/profile/profile.component';
 import { UserUpdateFormModalComponent } from './modules/profile/user-update-form-modal/user-update-form-modal.component';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import { FileUploaderComponent } from './modules/resource/file-uploader/file-uploader.component';
+import {FileDragNDropDirective} from "./modules/resource/file-drag-n-drop.directive";
+import {FileUtil} from "./modules/resource/file-util";
 
 @NgModule({
   declarations: [
@@ -34,26 +40,29 @@ import { UserUpdateFormModalComponent } from './modules/profile/user-update-form
     NavbarComponent,
     HomeComponent,
     ProfileComponent,
-    UserUpdateFormModalComponent
+    UserUpdateFormModalComponent,
+    FileUploaderComponent,
+    FileDragNDropDirective,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ModalModule,
-    SweetAlert2Module.forRoot(),
-    ReactiveFormsModule
-
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ModalModule,
+        SweetAlert2Module.forRoot(),
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule
+    ],
   providers: [AuthGuard, AuthService, HttpService, RoleService, FacultyService, BranchService, ClassService,
-    TeacherService, StudentService, LessonService, LiveLessonService, PeriodService,
+    TeacherService, StudentService, LessonService, LiveLessonService, PeriodService, FileUtil,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
     }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

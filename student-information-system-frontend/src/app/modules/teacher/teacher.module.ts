@@ -5,6 +5,7 @@ import { LiveLessonComponent } from './live-lesson/live-lesson.component';
 import { NotesByLiveLessonComponent } from './notes-by-live-lesson/notes-by-live-lesson.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NoteFormModalComponent } from './modals/note-form-modal/note-form-modal.component';
+import { LectureNotesByLiveLessonComponent } from './lecture-notes-by-live-lesson/lecture-notes-by-live-lesson.component';
 
 
 
@@ -12,7 +13,8 @@ import { NoteFormModalComponent } from './modals/note-form-modal/note-form-modal
   declarations: [
     LiveLessonComponent,
     NotesByLiveLessonComponent,
-    NoteFormModalComponent
+    NoteFormModalComponent,
+    LectureNotesByLiveLessonComponent
   ],
     imports: [
         CommonModule,
