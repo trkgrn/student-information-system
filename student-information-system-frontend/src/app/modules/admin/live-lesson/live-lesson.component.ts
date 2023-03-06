@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import {LiveLessonService} from "../../../services/live-lesson.service";
 import {LiveLesson} from "../../../models/entity/LiveLesson";
 import {LiveLessonFormModalComponent} from "../modals/live-lesson-form-modal/live-lesson-form-modal.component";
+import {LectureNoteService} from "../../../services/lecture-note.service";
+import {LectureNote} from "../../../models/entity/LectureNote";
 
 declare var $: any;
 
@@ -17,7 +19,8 @@ export class LiveLessonComponent implements OnInit {
   liveLessons: LiveLesson[] = [];
 
 
-  constructor(private liveLessonService: LiveLessonService, private modalService: ModalService) {
+  constructor(private liveLessonService: LiveLessonService, private modalService: ModalService,
+              private lectureNoteService: LectureNoteService) {
   }
 
   async ngOnInit() {
@@ -49,6 +52,7 @@ export class LiveLessonComponent implements OnInit {
       if (data.choose)
         this.liveLessonService.create(data.data)
           .then(async (value: any) => {
+            await this.lectureNoteService.create(new LectureNote(value));
             this.liveLessons = await this.liveLessonService.getAll();
           });
     }
