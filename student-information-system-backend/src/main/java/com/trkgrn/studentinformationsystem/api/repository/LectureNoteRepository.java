@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LectureNoteRepository extends JpaRepository<LectureNote, Long> {
+    LectureNote getLectureNoteByLiveLesson_LiveLessonId(Long liveLessonId);
 }
