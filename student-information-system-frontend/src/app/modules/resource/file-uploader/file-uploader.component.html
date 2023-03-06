@@ -1,0 +1,96 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h3>{{title}}</h3>
+  </div><!-- /.modal-header -->
+
+
+  <div class="modal-body">
+    <div class="row h-100 justify-content-center align-items-center m-0">
+      <div class="col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 col-sm-12  col-lg-5">
+              <div class="drag-area dropzone" fileDragDrop (filesChangeEmiter)="onFileChangeWithDrop($event)">
+
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <header>Drag & Drop to Upload File</header>
+                <span>OR</span>
+                <label>
+                  <input style="max-width: 0" type="file" class="text-nowrap text-truncate" name="file" id="file"
+                         (change)="onFileChangeWithManual($event)" multiple
+                  /> Choose a files
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-7">
+              <div class="title">
+                File Upload List
+              </div>
+
+              <div class="file_upload_list scrollbar">
+                <ul *ngIf="files.length>0">
+                  <li *ngFor="let fileLoad of files">
+                    <div class="file_item">
+                      <div class="format">
+                        <p class="text-uppercase">{{fileUtil.getFileExtension(fileLoad.file!.name)}}</p>
+                      </div>
+                      <div class="file_progress">
+                        <div class="file_info">
+                          <div class="file_name">
+                            {{fileLoad.file!.name}}
+                          </div>
+                          <div class="file_size_wrap">
+                            <div class="file_size">{{fileUtil.getFileSizeByByte(fileLoad.file!.size!)}}</div>
+                            <div *ngIf="!fileLoad.isUploaded" class="file_button" (click)="deleteFile(fileLoad.file!)">
+                              <i class="fas fa-trash"></i></div>
+                            <div *ngIf="!fileLoad.isUploaded" class="file_button" (click)="upload(fileLoad)"><i
+                              class="fas fa-upload"></i></div>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div class="inner_progress"
+                               attr.aria-valuenow="{{ fileLoad.percentage }}"
+                               aria-valuemin="0"
+                               aria-valuemax="100"
+                               [ngStyle]="{ width: fileLoad.percentage + '%' }"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-outline-danger" (click)="closeModal()">Cancel</button>
+    </div>
+  </div><!-- /.modal-footer -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

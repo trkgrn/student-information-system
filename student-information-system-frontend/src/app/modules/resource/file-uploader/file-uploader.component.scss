@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.file-upload {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfbfb;
+}
+
+$color_1: #fff;
+$color_2: #5256ad;
+
+.container{
+
+  background: white;
+  border: solid white;
+  border-radius: 15px;
+}
+
+
+.drag-area {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: $color_1;
+
+  .icon {
+    font-size: 70px;
+    color: $color_2;
+  }
+
+  header {
+    font-size: 20px;
+    font-weight: 500;
+    color: $color_2;
+  }
+
+  span {
+    font-size: 15px;
+    font-weight: 500;
+    color: $color_2;
+    margin: 10px 0 15px 0;
+  }
+
+  label {
+    padding: 10px 20px;
+    background: $color_2;
+    border: 0;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    color: $color_1;
+    cursor: pointer;
+  }
+}
+
+.title {
+  background: $color_1;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+.file_upload_list {
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 310px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+  }
+
+  li {
+    list-style: none;
+
+    .file_item {
+      display: flex;
+      border-bottom: 1px solid #f3f4f8;
+      padding: 15px 20px;
+    }
+  }
+}
+
+.file_item {
+  .format {
+    background: #8178d3;
+    border-radius: 10px;
+    width: 45px;
+    height: 40px;
+    line-height: 40px;
+    color: $color_1;
+    text-align: center;
+    font-size: 12px;
+    margin-right: 15px;
+  }
+
+  .file_progress {
+    width: calc(100% - 60px);
+    font-size: 14px;
+
+    .progress {
+      width: 100%;
+      height: 4px;
+      background: #efefef;
+      overflow: hidden;
+      border-radius: 5px;
+      margin-top: 8px;
+      position: relative;
+
+      .inner_progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #58e380;
+      }
+    }
+  }
+
+  .file_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .file_size_wrap {
+    display: flex;
+    align-items: center;
+
+    .file_size {
+      margin-right: 15px;
+    }
+
+    .file_button {
+      margin-right: 2px;
+      border: 1px solid #8178d3;
+      color: $color_2;
+      width: 20px;
+      height: 20px;
+      line-height: 18px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        background: $color_2;
+        color: $color_1;
+      }
+    }
+
+  }
+}
+
+
+
+
+
+
