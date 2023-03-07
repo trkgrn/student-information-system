@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -83,6 +84,7 @@ public class LectureNoteService {
                     lectureNote.getWeeklyNotes()
                     .stream()
                     .map(weeklyNotes -> modelMapper.map(weeklyNotes, WeeklyNotesDto.class))
+                            .sorted(Comparator.comparing(WeeklyNotesDto::getWeekNumber))
                     .collect(Collectors.toList()));
             return lectureNoteDto;
         }

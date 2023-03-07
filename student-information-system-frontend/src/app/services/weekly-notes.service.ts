@@ -38,4 +38,8 @@ export class WeeklyNotesService {
   deleteFile(file: File, weeklyNotesId: number) {
     return this.http.put(this.path + '/delete-file/' + weeklyNotesId, file)
   }
+
+  updateDescription(desc: string, weeklyNotesId: number) {
+    return this.http.put(this.path + '/description/' + weeklyNotesId, desc)
+  }
 }

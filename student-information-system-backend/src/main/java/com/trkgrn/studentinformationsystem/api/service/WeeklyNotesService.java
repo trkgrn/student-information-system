@@ -75,5 +75,16 @@ public class WeeklyNotesService {
        return null;
     }
 
+    public WeeklyNotes updateDescription(String description, Long weeklyNotesId){
+        Optional<WeeklyNotes> weeklyNotesOptional = weeklyNotesRepository.findById(weeklyNotesId);
+        if (weeklyNotesOptional.isPresent()) {
+            WeeklyNotes updatedWeeklyNotes = weeklyNotesOptional.get();
+            updatedWeeklyNotes.setDescription(description);
+            return weeklyNotesRepository.save(updatedWeeklyNotes);
+        }
+
+       return null;
+    }
+
 
 }

@@ -21,7 +21,8 @@
     <div class="row">
       <div class="col-12">
         <div class="card">
-          <div class="card-header">List of Weeks</div>
+          <div class="card-header">List of Weeks
+          </div>
           <ul
             class="list-group list-group-flush"
             *ngFor="let weeklyNote of lectureNote?.weeklyNotes"
@@ -38,8 +39,17 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <ul *ngFor="let file of weeklyNote.files">
-                    <li>
+
+                  <ul >
+                    <div class="info-box" style="padding: 15px;">
+                      <div class="info-box-content">
+                        <span >{{weeklyNote.description}}</span>
+                      </div>
+                      <div class="info-box-more">
+                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#editDescription" (click)="editDescription(weeklyNote.description!,weeklyNote.weeklyNotesId!)"> <i class="fas fa-edit"></i></button>
+                      </div>
+                    </div>
+                    <li *ngFor="let file of weeklyNote.files">
                         <div class="info-box" style="padding: 15px;">
                           <span class="info-box-icon bg-blue text-uppercase text-bold">{{file.fileExtension}}</span>
                           <div class="info-box-content pl-4">
@@ -74,6 +84,27 @@
     </div>
   </div>
 </section>
+
+
+
+
+<!-- Modal -->
+<div *ngIf="editMode" class="modal" id="editDescription" tabindex="-1" role="dialog" aria-labelledby="editDescription" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editDescLabel">Edit Description</h5>
+      </div>
+      <div class="modal-body">
+        <textarea style="width: 100%; min-height: 150px" [(ngModel)]="description"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="editDescriptionCancel()">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" (click)="editDescriptionSave()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

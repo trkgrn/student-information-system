@@ -21,7 +21,7 @@ export class NoteFormModalComponent implements OnModalInit {
 
     this.form = formBuilder.group({
       midtermExam: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
-      finalExam: [null, [Validators.required, Validators.min(0), Validators.max(100)]]
+      finalExam: [0, [Validators.min(0), Validators.max(100)]]
     });
 
   }

@@ -80,4 +80,13 @@ public class WeeklyNotesController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping("/description/{id}")
+    public ResponseEntity<?> updateDescription(@RequestBody String description, @PathVariable Long id) {
+        Optional<WeeklyNotes> updatedWeeklyNotes = Optional.ofNullable(weeklyNotesService.updateDescription(description, id));
+        if (updatedWeeklyNotes.isPresent()) {
+            return new ResponseEntity<>(updatedWeeklyNotes, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }

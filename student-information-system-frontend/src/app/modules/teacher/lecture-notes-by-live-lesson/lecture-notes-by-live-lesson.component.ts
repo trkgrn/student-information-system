@@ -11,6 +11,8 @@ import {File} from "../../../models/entity/File";
 import {WeeklyNotesService} from "../../../services/weekly-notes.service";
 import Swal from "sweetalert2";
 
+declare var $: any;
+
 @Component({
   selector: 'app-lecture-notes-by-live-lesson',
   templateUrl: './lecture-notes-by-live-lesson.component.html',
@@ -20,12 +22,41 @@ export class LectureNotesByLiveLessonComponent implements OnInit {
 
   liveLessonId?: number;
   lectureNote?: LectureNote;
-  liveLesson?:LiveLesson;
-  constructor(private route: ActivatedRoute,private lectureNoteService:LectureNoteService,private modalService: ModalService
-  ,public fileUtil:FileUtil, private cloud:CloudStorageService, private weeklyNotesService:WeeklyNotesService) { }
+  liveLesson?: LiveLesson;
+
+  description: string = ""
+  editMode: boolean= false;
+  editedWeeklyNoteId?: number;
+
+  constructor(private route: ActivatedRoute, private lectureNoteService: LectureNoteService, private modalService: ModalService
+    , public fileUtil: FileUtil, private cloud: CloudStorageService, private weeklyNotesService: WeeklyNotesService) {
+  }
+
+
+  editDescription(desc:string,weeklyNotesId:number) {
+    this.editMode = true;
+    this.description = desc;
+    this.editedWeeklyNoteId = weeklyNotesId;
+  }
+  editDescriptionCancel() {
+    this.editMode = false;
+    this.editedWeeklyNoteId = undefined;
+    this.description = "";
+    $('#editDescription').modal('hide')
+  }
+  async editDescriptionSave() {
+
+    if (this.editedWeeklyNoteId) {
+      await this.weeklyNotesService.updateDescription(this.description,this.editedWeeklyNoteId).then(async () => {
+        this.lectureNote = await this.lectureNoteService.getByLiveLessonId(this.liveLessonId as number);
+        this.editDescriptionCancel();
+      });
+    }
+  }
+
 
   async ngOnInit() {
-    let id:any = this.route.snapshot.paramMap.get('id');
+    let id: any = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.liveLessonId = id;
       this.lectureNote = await this.lectureNoteService.getByLiveLessonId(this.liveLessonId as number);
@@ -34,11 +65,11 @@ export class LectureNotesByLiveLessonComponent implements OnInit {
   }
 
 
-  newDocs(weeklyNoteId?:number) {
+  newDocs(weeklyNoteId?: number) {
     const modal = this.modalService.open(FileUploaderComponent, {
       props: {
         title: 'Upload File',
-        weeklyNoteId:weeklyNoteId
+        weeklyNoteId: weeklyNoteId
       },
       centered: true,
       scrollable: true,
@@ -47,48 +78,48 @@ export class LectureNotesByLiveLessonComponent implements OnInit {
     });
 
     modal.afterClose = async (data) => {
-      if (data.change){
+      if (data.change) {
         this.lectureNote = await this.lectureNoteService.getByLiveLessonId(this.liveLessonId as number);
       }
     }
   }
 
-   async deleteDocs(weeklyNotesId:number,file:File){
+  async deleteDocs(weeklyNotesId: number, file: File) {
 
-     const sweetAlert = Swal.mixin({
-       customClass: {
-         confirmButton: 'btn btn-success',
-         cancelButton: 'btn btn-danger'
-       },
-       buttonsStyling: true,
-     });
+    const sweetAlert = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: true,
+    });
 
-     sweetAlert.fire({
-       title: 'Are you sure?',
-       text: "You won't be able to revert this!",
-       type: 'warning',
-       showCancelButton: true,
-       confirmButtonText: 'Yes, delete it!',
-       cancelButtonText: 'No, cancel!',
-       reverseButtons: true
-     }).then(async (result) => {
-       if (result.value) {
-         await this.delete(weeklyNotesId,file);
-       } else if (result.dismiss === Swal.DismissReason.cancel) {
-         await sweetAlert.fire(
-           'Cancelled',
-           'Successfully cancelled.',
-           'error'
-         )
-       }
-     });
+    sweetAlert.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.value) {
+        await this.delete(weeklyNotesId, file);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        await sweetAlert.fire(
+          'Cancelled',
+          'Successfully cancelled.',
+          'error'
+        )
+      }
+    });
 
   }
 
-  async delete(weeklyNotesId:number,file:File){
-    await this.cloud.deleteFileStorage(file.cloudPath!).then(async ()=>{
-      await this.weeklyNotesService.deleteFile(file,weeklyNotesId)
-        .then(async ()=>{
+  async delete(weeklyNotesId: number, file: File) {
+    await this.cloud.deleteFileStorage(file.cloudPath!).then(async () => {
+      await this.weeklyNotesService.deleteFile(file, weeklyNotesId)
+        .then(async () => {
           this.lectureNote = await this.lectureNoteService.getByLiveLessonId(this.liveLessonId as number);
         })
 
