@@ -1,0 +1,80 @@
+<section class="content-header mb-3">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>{{liveLesson?.educationSeason?.name + " / " + liveLesson?.lesson?.name + " / " + liveLesson?.teacher?.user?.firstName + " " +liveLesson?.teacher?.user?.lastName}}</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="/student/lessons">Live Lesson</a></li>
+          <li
+            class="breadcrumb-item active">{{liveLesson?.educationSeason?.name + " / " + liveLesson?.lesson?.name}}</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<section class="content" style="padding:0 30px 0 30px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">List of Weeks
+          </div>
+          <ul
+            class="list-group list-group-flush"
+            *ngFor="let weeklyNote of lectureNote?.weeklyNotes"
+          >
+            <li class="list-group-item">
+
+              <div class="card collapsed-card">
+                <div class="card-header">
+                  <h3 class="card-title">{{"Week " + weeklyNote.weekNumber}}</h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+
+                  <ul style="list-style: none;">
+                    <div class="info-box" style="padding: 15px;">
+                      <div class="info-box-content">
+                        <span >{{weeklyNote.description}}</span>
+                      </div>
+                    </div>
+                    <li *ngFor="let file of weeklyNote.files">
+                      <div class="info-box" style="padding: 15px;">
+                        <span class="info-box-icon bg-blue text-uppercase text-bold">{{file.fileExtension}}</span>
+                        <div class="info-box-content pl-4">
+                          <span class="info-box-text"><a href="{{file.downloadUrl}}" target="_blank">{{file.fileName}}</a></span>
+                          <span class="info-box-number">{{fileUtil.getFileSizeByByte(file.fileSize!)}}</span>
+                        </div>
+                        <div class="info-box-more pt-3 pr-3">
+                          <a href="{{file.downloadUrl}}" target="_blank" class="btn btn-outline-primary mr-1"><i class="fas fa-download"></i></a>
+                        </div>
+                      </div>
+
+                    </li>
+                  </ul>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer" style="background: white">
+                </div>
+                <!-- /.card-footer-->
+              </div>
+
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

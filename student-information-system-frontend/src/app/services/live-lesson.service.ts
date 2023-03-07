@@ -22,6 +22,10 @@ export class LiveLessonService {
     return this.http.get(this.path + '/teacher/' + teacherId);
   }
 
+  getByStudentId(studentId: number) {
+    return this.http.get(this.path + '/student/' + studentId);
+  }
+
   create(liveLesson: any) {
     return this.http.post(this.path, liveLesson);
   }
