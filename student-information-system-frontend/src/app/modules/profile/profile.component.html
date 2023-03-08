@@ -14,50 +14,64 @@
   </div><!-- /.container-fluid -->
 </section>
 
-<!-- Main content -->
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-5">
 
-        <!-- Profile Image -->
-        <div class="card card-primary card-outline">
-          <div class="card-body box-profile">
-            <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle"
-                   src="./assets/texture.png"
-                   alt="User profile picture">
+
+<div class="row h-100 justify-content-center align-items-center m-0">
+  <div class="col-12">
+    <div class="container">
+      <div class="row h-100 justify-content-center align-items-center m-0">
+        <div class="col-5">
+          <!-- Main content -->
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row ">
+                <div class="col-12">
+
+                  <!-- Profile Image -->
+                  <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                      <div class="text-center mt-3">
+                        <img class="profile-user-img img-fluid img-circle"
+                             src="./assets/texture.png"
+                             alt="User profile picture">
+                      </div>
+
+                      <h3 class="profile-username text-center">{{user.firstName + " " +user.lastName}}</h3>
+
+                      <p class="text-muted text-center">{{user.role?.name}}</p>
+
+                      <ul class="list-group list-group-unbordered mb-4 mt-4">
+                        <li *ngIf="authService.getRole()=='STUDENT'" class="list-group-item">
+                          <b>Student-No</b> <a class="float-right">{{student.studentNo}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>TCK-No</b> <a class="float-right">{{user.tckNo}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Telephone</b> <a class="float-right">+90 {{user.telNo}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>E-mail</b> <a class="float-right">{{user.email}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b class="float-left">Address</b> <a class="float-right">{{user.address}}</a>
+                        </li>
+                      </ul>
+
+                      <a (click)="openUpdateFormModal()" class="btn btn-primary btn-block"><b>Update</b></a>
+                      <a (click)="logout()" class="btn btn-danger btn-block"><b>Sign Out</b></a>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+              </div>
             </div>
-
-            <h3 class="profile-username text-center">{{user.firstName + " " +user.lastName}}</h3>
-
-            <p class="text-muted text-center">{{user.role?.name}}</p>
-
-            <ul class="list-group list-group-unbordered mb-3">
-              <li *ngIf="authService.getRole()=='STUDENT'" class="list-group-item">
-                <b>Student-No</b> <a class="float-right">{{student.studentNo}}</a>
-              </li>
-              <li class="list-group-item">
-                <b>TCK-No</b> <a class="float-right">{{user.tckNo}}</a>
-              </li>
-              <li class="list-group-item">
-                <b>Telephone</b> <a class="float-right">+90 {{user.telNo}}</a>
-              </li>
-              <li class="list-group-item">
-                <b>E-mail</b> <a class="float-right">{{user.email}}</a>
-              </li>
-              <li class="list-group-item">
-                <b class="float-left">Address</b> <a class="float-right">{{user.address}}</a>
-              </li>
-            </ul>
-
-            <a (click)="openUpdateFormModal()" class="btn btn-primary btn-block"><b>Update</b></a>
-            <a (click)="logout()" class="btn btn-danger btn-block"><b>Sign Out</b></a>
-          </div>
-          <!-- /.card-body -->
+          </section>
         </div>
-        <!-- /.card -->
       </div>
     </div>
+
   </div>
-</section>
+</div>
+

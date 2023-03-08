@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
   async logout() {
    await this.authService.logout()
      .then(() => {
-        localStorage.clear();
         this.router.navigateByUrl('/auth/login');
+       localStorage.clear();
      })
      .catch((err:any) => {
         console.log(err);

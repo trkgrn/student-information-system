@@ -63,9 +63,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a routerLink="/a/home" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('teacher')">
+                    <a routerLink="/admin/live-lesson" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('teacher')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v1</p>
+                      <p>Live Lesson</p>
                     </a>
                   </li>
                 </ul>
@@ -113,30 +113,13 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item ">
-                <a href="#" class="nav-link" id="lesson">
+              <li class="nav-item">
+                <a routerLink="/admin/lesson" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Lesson
-                    <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a routerLink="/admin/lesson" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Lesson</p>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a routerLink="/admin/live-lesson" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Live Lesson</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
 
@@ -151,35 +134,21 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item ">
-                <a href="#" class="nav-link" id="lesson-teacher">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+              <li class="nav-header">SCHOOL</li>
+              <li class="nav-item">
+                <a routerLink="/teacher/notes" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-user-graduate"></i>
                   <p>
-                    Lesson
-                    <i class="right fas fa-angle-left"></i>
+                    My Students
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a routerLink="/teacher/lessons" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-teacher')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Live Lesson (active)</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a routerLink="/teacher/notes" class="nav-link" [routerLinkActive]="['active']" (click)="activeRoute('lesson-teacher')">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>My Students</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-header">E-Learning</li>
               <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
+                <a routerLink="/teacher/lessons" class="nav-link" routerLinkActive="active" (click)="clearPrevActive()">
+                  <i class="nav-icon fas fa-book-open"></i>
                   <p>
-                    Gallery
+                    Live Lesson
                   </p>
                 </a>
               </li>
@@ -196,6 +165,7 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-header">SCHOOL</li>
               <li class="nav-item ">
                 <a href="#" class="nav-link" id="lesson-tree">
                   <i class="nav-icon fas fa-book-open"></i>
