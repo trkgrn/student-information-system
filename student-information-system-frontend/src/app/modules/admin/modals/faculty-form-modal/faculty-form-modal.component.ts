@@ -25,7 +25,7 @@ export class FacultyFormModalComponent implements OnModalInit {
   }
 
   onModalInit(): void {
-    console.log('Modal initialized');
+    console.log('Faculty form Modal initialized');
     if (this.faculty) {
       this.form.patchValue(this.faculty);
     }

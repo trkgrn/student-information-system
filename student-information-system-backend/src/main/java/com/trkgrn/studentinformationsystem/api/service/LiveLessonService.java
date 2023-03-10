@@ -67,7 +67,7 @@ public class LiveLessonService {
     }
 
     public List<LiveLesson> getLiveLessonByStudent_StudentId(Long studentId) {
-        return liveLessonRepository.getLiveLessonsByLessonRequest_Student_StudentId(studentId).orElse(null);
+        return liveLessonRepository.getLiveLessonsByLessonRequest_Student_StudentIdAndLessonRequest_IsApproved(studentId,true).orElse(null);
     }
 
     public List<LiveLesson> getAvailableLiveLessonsByStudent(Student student) {
