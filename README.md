@@ -26,20 +26,19 @@
   * PostgreSQL
   * Redis
 
-### Screenshots
+## Screenshots
 
 #### Admin
-![Admin Panel](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/admin.gif?token=GHSAT0AAAAAAB7MZTCANZK6LSRMCP3GH6E4ZALMH4A)
+![Admin Panel](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/admin.gif?token=GHSAT0AAAAAAB7MZTCBN7UAIZRKGK7SR7DEZALOKMA)
 
 #### Lesson request
-![Lesson request](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/lesson-request.gif?token=GHSAT0AAAAAAB7MZTCAURCIDI2KHR2UMDV2ZALMJTA)
+![Lesson request](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/lesson-request.gif?token=GHSAT0AAAAAAB7MZTCBDQHHIYCBEDUAAUOWZALOMTA)
 
 #### Notes By Live Lesson
-![Grade-change](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/grade-change.gif?token=GHSAT0AAAAAAB7MZTCAH5EEGP6R4DUWA7VSZALMI4Q)
+![Grade-change](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/grade-change.gif?token=GHSAT0AAAAAAB7MZTCBRJV7YFC4X7VXNJJ4ZALOLTA)
 
 #### Lesson Documents
-![Lesson Docs](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/lesson-docs.gif?token=GHSAT0AAAAAAB7MZTCBULSC5NB24GHJA5PYZALMJDQ)
-
+![Lesson Docs](https://raw.githubusercontent.com/trkgrn/student-information-system/master/pics/lesson-docs.gif?token=GHSAT0AAAAAAB7MZTCBVEJA3MVB2UJN7HWKZALOMHQ)
 
 
 
